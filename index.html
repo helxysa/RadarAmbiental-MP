@@ -61,20 +61,39 @@
                     <li class="p-5 flex justify-center items-center h-16">
                         <img src="https://www.cnmp.mp.br/portal/images/noticias/2024/setembro/radar_ambiental_.png" alt="MP Logo" class="h-20 w-auto">
                     </li>
-            
+                
                     <li>
                         <button type="button" class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100" aria-controls="dropdown-acessar" data-collapse-toggle="dropdown-acessar">
                             <svg class="w-3 h-3 transition-transform duration-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
                             </svg>
-                            <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">COMO ACESSAR O APLICATIVO DO <br> RADAR AMBIENTAL (ANDROID)</span>
+                            <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap text-lg">Como acessar o Radar Ambiental</span>
                         </button>
                         <ul id="dropdown-acessar" class=" py-2 space-y-2">
                             <li>
-                                <a href="#acessar-site-peticionamento" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100">1. Baixar aplicativo do radar ambiental</a>
+                                <a href="#entrar-radar-ambiental" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100">1. Entrar no Radar Ambiental</a>
                             </li>
                         </ul>
                     </li>
+        
+                    <li>
+                        <button type="button" class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100" aria-controls="dropdown-pagina-inicial" data-collapse-toggle="dropdown-pagina-inicial">
+                            <svg class="w-3 h-3 transition-transform duration-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                            </svg>
+                            <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap text-lg">Página Inicial do Radar Ambiental</span>
+                        </button>
+                        <ul id="dropdown-pagina-inicial" class="py-2 space-y-2">
+                            <li>
+                                <a href="#pagina-inicial-radar-ambiental" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100">1. Página Inicial do Radar Ambiental</a>
+                            </li>
+                            <li>
+                                <a href="#informacoes-barra-navegacao-geral" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100">2. Informações Barra de Navegação  - Geral</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    
                 </ul>
             </div>
         </aside>
@@ -83,7 +102,6 @@
             <!-- Versão Mobile -->
              
              <div class="md:hidden">
-                
                 <div class="shadow-lg rounded-lg p-4 mb-6">
                     <h2 class="text-xl font-bold mb-4 mt-4">Radar Ambiental</h2>
                     <p class="text-sm">Como acessar o site do radar ambiental</p>
@@ -96,7 +114,7 @@
                     </div>
                 </div>
                 
-                <div class="md:hidden shadow-lg rounded-lg p-4 mb-6">
+                <div class="md:hidden bg-gray-200 rounded-lg shadow-lg p-4">
                     <h2 class="text-xl font-bold mb-4 mt-4">Radar Ambiental</h2>
                     <p class="text-sm">Baixe o aplicativo do radar ambiental</p>
                     
@@ -111,37 +129,110 @@
                         </button>
                         
                     </div>
+                </div>
             </div>
-    
-            <!-- Versão Web -->
+            
+            
+            
             <div class="hidden md:block">
                 <h2 class="text-2xl font-bold mb-6">Radar Ambiental</h2>
-                <p class="text-lg mb-4">Como acessar o site do radar ambiental</p>
                 
                 <!-- Alterado para flex container com espaçamento e alinhamento -->
                 <div class="flex flex-col lg:flex-row gap-6 mt-8">
-                    <!-- Cada card agora ocupa metade da largura em telas grandes -->
-                    <div class="bg-white p-6 rounded-lg shadow-md flex-1">
-                        <h3 class="text-xl font-semibold mb-4">Acessar site do radar ambiental</h3>
-                        <p class="mb-4">Acesse o Radar Ambiental diretamente do seu smartphone.</p>
-                        <button class="bg-[#A03021] text-white py-2 px-4 rounded-md  hover:bg-gray-400 transition duration-300">
-                            <a href="https://portal.mpap.mp.br/radar_ambiental/" target="_blank">Acessar</a>
-                        </button>
-                            
+                    <div class="flex-1 bg-white rounded-lg shadow-lg p-6">
+                        <h3 class="text-xl font-semibold mb-4">Acesse o Radar Ambiental</h3>
+                        <p class="mb-4">Clique no botão abaixo para acessar o site do Radar Ambiental:</p>
+                        <a href="https://portal.mpap.mp.br/radar_ambiental/" target="_blank" class="inline-block bg-[#A03021] text-white py-2 px-4 rounded-md hover:bg-[#8a2a1d]">Acessar Radar Ambiental</a>
+                    </div>
                     
-                    </div>
-
-                    <div class="bg-white p-6 rounded-lg shadow-md flex-1">
+                    <div class="flex-1 bg-white rounded-lg shadow-lg p-6">
                         <h3 class="text-xl font-semibold mb-4">Baixe o Aplicativo</h3>
-                        <p class="mb-4">Acesse o Radar Ambiental diretamente do seu smartphone.</p>
-                        <button class="bg-[#A03021] text-white py-2 px-4 rounded-md  hover:bg-gray-400 transition duration-300"><a href="https://apps.apple.com/br/app/radar-ambiental/id1614229801" target="_blank">Download IOS</a></button>
-                        <button class="bg-[#A03021] text-white py-2 px-4 rounded-md  hover:bg-gray-400 transition duration-300"><a href="https://play.google.com/store/apps/details?id=br.mp.mpap.radarambiental&pcampaignid=web_share" target="_blank">Download Android</a></button>
+                        <p class="mb-4">Escolha a versão do aplicativo para o seu dispositivo:</p>
+                        <div class="space-y-4">
+                            <a href="https://apps.apple.com/br/app/radar-ambiental/id1614229801" target="_blank" class="block bg-[#A03021] text-white py-2 px-4 rounded-md text-center hover:bg-[#8a2a1d]">Download iOS</a>
+                            <a href="https://play.google.com/store/apps/details?id=br.mp.mpap.radarambiental&pcampaignid=web_share" target="_blank" class="block bg-[#A03021] text-white py-2 px-4 rounded-md text-center hover:bg-[#8a2a1d]">Download Android</a>
+                        </div>
                     </div>
-
                 </div>
+        
+                <!-- Conteudo Principal -->
+                <section id="entrar-radar-ambiental" class="max-w-3xl mx-auto px-4 py-8 mt-9">
+                    <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+                        <button type="button" class="w-full text-left p-6 focus:outline-none" aria-controls="dropdown-content-acessar-site" data-collapse-toggle="dropdown-content-acessar-site">
+                            <h2 class="text-3xl font-bold text-gray-800 flex items-center">
+                                <svg class="w-6 h-6 mr-2 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                                ✔️ Como acessar o Radar Ambiental
+                            </h2>
+                        </button>
+                        
+                        <div id="dropdown-content-acessar-site" class="p-6 border-t border-gray-200">
+                            <h3 class="text-2xl font-semibold mb-4 text-gray-700" id="entrar-radar-ambiental">
+                                1. Entrar no Radar Ambiental
+                            </h3>
+                            <p class="mb-4 text-left">
+                                <a href="https://portal.mpap.mp.br/radar_ambiental/" 
+                                   target="_blank" 
+                                   rel="noopener noreferrer nofollow" 
+                                   class="text-blue-600 hover:underline text-lg">
+                                    https://portal.mpap.mp.br/radar_ambiental/
+                                </a>
+                            </p>
+                            <p class="mb-6 text-left text-gray-600">Você irá fazer o Login, inserindo seu usuário e senha.</p>
+                            <img src="https://images.tango.us/workflows/27d0f1c7-cb38-4c96-b48a-e766855ad47f/steps/fe0c50a7-8995-477d-91ba-29bd5e35520a/6f260678-ab96-405b-a958-8b14eed42c35.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.5002&fp-y=0.2544&fp-z=1.5522&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=366&mark-y=92&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz00NjgmaD0zODYmZml0PWNyb3AmY29ybmVyLXJhZGl1cz0xMA%3D%3D" 
+                                 alt="Entrar no Radar Ambiental" 
+                                 class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-8"
+                            />
+            
+                            
+                        </div>
+                    </div>
+                </section>
+
+                <section id="pagina-inicial-radar-ambiental" class="max-w-3xl mx-auto px-4 py-8 mt-9">
+                    <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+                        <button type="button" class="w-full text-left p-6 focus:outline-none" aria-controls="dropdown-content-acessar-site" data-collapse-toggle="dropdown-content-acessar-site">
+                            <h2 class="text-3xl font-bold text-gray-800 flex items-center">
+                                <svg class="w-6 h-6 mr-2 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                                ✔️ Pagina Inicial do Radar Ambiental
+                            </h2>
+                        </button>
+                        
+                        <div id="dropdown-content-acessar-site" class="p-6 border-t border-gray-200" id="pagina-inicial-radar-ambiental">
+                            <h3 class="text-2xl font-semibold mb-4 text-gray-700">
+                                1. Página Inicial do Radar Ambiental
+                            </h3>
+                            <p class="mb-6 text-left text-gray-600">Nessa página você terá acesso ao Mapa e Listagem de Registros</p>
+                            <img src="https://images.tango.us/workflows/27d0f1c7-cb38-4c96-b48a-e766855ad47f/steps/fb18f253-35ff-4a1e-9c90-ffe8937a5b4f/db07c4ab-10d6-4900-bab0-78fb8e5669fa.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.5883&fp-y=0.5282&fp-z=1.0710&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=144&mark-y=4&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz0xMDU0Jmg9NzE1JmZpdD1jcm9wJmNvcm5lci1yYWRpdXM9MTA%3D" 
+                                 alt="Página Inicial do Radar Ambiental" 
+                                 class="w-full max-w-2xl mx-auto rounded-lg shadow-md"
+                            />
+                            
+                        </div>
+
+                        <div id="dropdown-content-acessar-site" class="p-6 border-t border-gray-200">
+                            <h3 class="text-2xl font-semibold mb-4 text-gray-700"  id="informacoes-barra-navegacao-geral">
+                                2. Informações Barra de Navegação - Geral
+                            </h3>
+                            <p class="mb-6 text-left text-gray-600 font-medium">Geral</p>
+                            <p class="mb-6 text-left text-gray-600 ml-2"> - Irá mostrar todas as denuncias registradas de todas as cidades</p>
+                            <img src="https://images.tango.us/workflows/27d0f1c7-cb38-4c96-b48a-e766855ad47f/steps/ffb82e96-026b-4b63-ac9c-7efa65684cac/c8682180-d0c1-4ad0-91e1-e6fcfda16bc9.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.0459&fp-y=0.0670&fp-z=2.6017&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=11&mark-y=93&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz0yNjMmaD02NiZmaXQ9Y3JvcCZjb3JuZXItcmFkaXVzPTEw"
+                                 alt="Página Inicial do Radar Ambiental" 
+                                 class="w-full max-w-2xl mx-auto rounded-lg shadow-md"
+                            />
+                            
+                        </div>
+                    </div>
+                </section>
+
+
             </div>
+        
         </main>
-    </div>
+    
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         // Mobile dropdown menu

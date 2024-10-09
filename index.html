@@ -7,17 +7,23 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="flex flex-col min-h-screen">
-    <nav class="bg-green-500 p-4">
-        <div class="container mx-auto flex justify-between items-center">
-            <!-- Título para desktop -->
-            <h1 class="text-2xl font-bold text-white  hidden md:block">Radar Ambiental</h1>
+    <nav class="bg-[#A03021] p-4">
+        
+        <div class="container mx-auto">
+              
             
             <!-- Menu para desktop -->
-            <div id="desktopMenu" class="hidden md:flex items-center space-x-4 ">
-                <a href="https://www.mpap.mp.br/" target="_blank" class="text-white hover:text-green-200 py-2">Portal MP</a>
-                <a href="https://portal.mpap.mp.br/radar_ambiental/" target="_blank" class="bg-white text-green-600 px-4 py-2 rounded-md hover:bg-green-100">Radar Ambiental</a>
+            <div id="desktopMenu" class="hidden md:flex items-center justify-between">
+                <div class="flex items-center space-x-4">
+                    <img src="https://www.cnmp.mp.br/portal/images/programacao/logo/logo.png" alt="Logo CNMP" class="h-12 w-auto">
+                    
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="https://www.mpap.mp.br/" target="_blank" class="text-white hover:text-gray-200 py-2">Portal MP</a>
+                    <a href="https://portal.mpap.mp.br/radar_ambiental/" target="_blank" class="bg-white text-[#A03021] px-4 py-2 hover:bg-gray-200 rounded-md ">Radar Ambiental</a>
+                </div>
             </div>
-            
+    
             <!-- Dropdown para mobile -->
             <div class="relative md:hidden flex justify-center items-center w-full">
                 <button id="sidebarToggle" class="text-white md:hidden absolute left-0">
@@ -53,7 +59,7 @@
             <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 min-w-[200px] max-w-[400px] w-auto">
                 <ul class="space-y-2 font-medium">
                     <li class="p-5 flex justify-center items-center h-16">
-                        <img src="https://www.mpap.mp.br/templates/portal/images/logo-mpap.png" alt="MP Logo" class="h-16 w-auto">
+                        <img src="https://www.cnmp.mp.br/portal/images/noticias/2024/setembro/radar_ambiental_.png" alt="MP Logo" class="h-20 w-auto">
                     </li>
             
                     <li>
@@ -75,15 +81,36 @@
 
         <main class="flex-grow p-4 md:ml-[200px]">
             <!-- Versão Mobile -->
+             
              <div class="md:hidden">
-                <h2 class="text-xl font-bold mb-4 mt-16">Radar Ambiental</h2>
-                <p class="text-sm">Como acessar o site do radar ambiental</p>
                 
-                <!-- Adicione mais conteúdo específico para mobile aqui -->
-                <div class="mt-4 space-y-4">
-                    <button class="w-full bg-green-500 text-white py-2 px-4 rounded-md">Baixar Aplicativo</button>
-                    <button class="w-full border border-green-500 text-green-500 py-2 px-4 rounded-md">Ver Tutorial</button>
+                <div class="shadow-lg rounded-lg p-4 mb-6">
+                    <h2 class="text-xl font-bold mb-4 mt-4">Radar Ambiental</h2>
+                    <p class="text-sm">Como acessar o site do radar ambiental</p>
+                    
+                    <!-- Adicione mais conteúdo específico para mobile aqui -->
+                    <div class="mt-4 space-y-4">
+                        <button class="w-full bg-[#A03021] text-white py-2 px-4 rounded-md">
+                            <a href="https://portal.mpap.mp.br/radar_ambiental/" target="_blank">Acessar</a>
+                        </button>
+                    </div>
                 </div>
+                
+                <div class="md:hidden shadow-lg rounded-lg p-4 mb-6">
+                    <h2 class="text-xl font-bold mb-4 mt-4">Radar Ambiental</h2>
+                    <p class="text-sm">Baixe o aplicativo do radar ambiental</p>
+                    
+                    <!-- Adicione mais conteúdo específico para mobile aqui -->
+                    <div class="mt-4 space-y-4">
+                        <button class="w-full bg-[#A03021] text-white py-2 px-4 rounded-md">
+                            <a href="https://apps.apple.com/br/app/radar-ambiental/id1614229801" target="_blank">Download IOS</a>
+                        </button>
+                        <button class="w-full bg-[#A03021] text-white py-2 px-4 rounded-md">
+                           
+                            <a href="https://play.google.com/store/apps/details?id=br.mp.mpap.radarambiental&pcampaignid=web_share" target="_blank">Download Android</a>
+                        </button>
+                        
+                    </div>
             </div>
     
             <!-- Versão Web -->
@@ -95,15 +122,22 @@
                 <div class="flex flex-col lg:flex-row gap-6 mt-8">
                     <!-- Cada card agora ocupa metade da largura em telas grandes -->
                     <div class="bg-white p-6 rounded-lg shadow-md flex-1">
+                        <h3 class="text-xl font-semibold mb-4">Acessar site do radar ambiental</h3>
+                        <p class="mb-4">Acesse o Radar Ambiental diretamente do seu smartphone.</p>
+                        <button class="bg-[#A03021] text-white py-2 px-4 rounded-md  hover:bg-gray-400 transition duration-300">
+                            <a href="https://portal.mpap.mp.br/radar_ambiental/" target="_blank">Acessar</a>
+                        </button>
+                            
+                    
+                    </div>
+
+                    <div class="bg-white p-6 rounded-lg shadow-md flex-1">
                         <h3 class="text-xl font-semibold mb-4">Baixe o Aplicativo</h3>
                         <p class="mb-4">Acesse o Radar Ambiental diretamente do seu smartphone.</p>
-                        <button class="bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 transition duration-300">Download</button>
+                        <button class="bg-[#A03021] text-white py-2 px-4 rounded-md  hover:bg-gray-400 transition duration-300"><a href="https://apps.apple.com/br/app/radar-ambiental/id1614229801" target="_blank">Download IOS</a></button>
+                        <button class="bg-[#A03021] text-white py-2 px-4 rounded-md  hover:bg-gray-400 transition duration-300"><a href="https://play.google.com/store/apps/details?id=br.mp.mpap.radarambiental&pcampaignid=web_share" target="_blank">Download Android</a></button>
                     </div>
-                    <div class="bg-white p-6 rounded-lg shadow-md flex-1">
-                        <h3 class="text-xl font-semibold mb-4">Tutorial de Uso</h3>
-                        <p class="mb-4">Aprenda a utilizar todas as funcionalidades do Radar Ambiental.</p>
-                        <button class="border border-green-500 text-green-500 py-2 px-4 rounded-md hover:bg-green-50 transition duration-300">Ver Tutorial</button>
-                    </div>
+
                 </div>
             </div>
         </main>

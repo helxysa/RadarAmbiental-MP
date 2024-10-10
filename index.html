@@ -7,32 +7,35 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <style>
-    /* Estilização da barra de rolagem */
+    
     ::-webkit-scrollbar {
       width: 10px;
     }
   
-    /* Estilização do "thumb" da barra de rolagem (a parte que você arrasta) */
+  
     ::-webkit-scrollbar-thumb {
       background: #A03021;
       border-radius: 5px;
     }
   
-    /* Estilização do "thumb" da barra de rolagem quando hover */
+
     ::-webkit-scrollbar-thumb:hover {
       background: #8a2a1d;
     }
   
-    /* Estilização do "track" da barra de rolagem (o fundo) */
+   
     ::-webkit-scrollbar-track {
       background: #f1f1f1;
     }
   
-    /* Para Firefox (versão 64 e posteriores) */
+
     * {
       scrollbar-width: thin;
       scrollbar-color: #A03021 #f1f1f1;
     }
+    html {
+    scroll-behavior: smooth;
+  }
   </style>
 <body class="flex flex-col min-h-screen">
     <nav class="bg-[#A03021] p-4">
@@ -266,7 +269,7 @@
         <main class="flex-grow p-4 md:ml-[200px]">
             <!-- Versão Mobile -->
              
-             <div class="md:hidden">
+             <div class="hidden">
                 <div class="shadow-lg rounded-lg p-4 mb-6">
                     <h2 class="text-xl font-bold mb-4 mt-4">Radar Ambiental</h2>
                     <p class="text-sm">Como acessar o site do radar ambiental</p>
@@ -294,14 +297,13 @@
                         </button>
                         
                     </div>
-
                     
                 </div>
             </div>
             
             
             
-            <div class="hidden md:block">
+            <div class="md:block">
                 <h2 class="text-2xl font-bold mb-6">Radar Ambiental</h2>
                 
                 <!-- Alterado para flex container com espaçamento e alinhamento -->
@@ -922,6 +924,8 @@
             const dropdownToggle = dropdown;
             const dropdownContent = document.getElementById(dropdown.getAttribute('aria-controls'));
             const dropdownIcon = dropdownToggle.querySelector('svg');
+
+            
 
             dropdownToggle.addEventListener('click', function() {
                 dropdownContent.classList.toggle('hidden');

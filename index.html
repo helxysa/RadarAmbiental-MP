@@ -6,6 +6,34 @@
     <title>Radar Ambiental</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
+<style>
+    /* Estilização da barra de rolagem */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+  
+    /* Estilização do "thumb" da barra de rolagem (a parte que você arrasta) */
+    ::-webkit-scrollbar-thumb {
+      background: #A03021;
+      border-radius: 5px;
+    }
+  
+    /* Estilização do "thumb" da barra de rolagem quando hover */
+    ::-webkit-scrollbar-thumb:hover {
+      background: #8a2a1d;
+    }
+  
+    /* Estilização do "track" da barra de rolagem (o fundo) */
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+  
+    /* Para Firefox (versão 64 e posteriores) */
+    * {
+      scrollbar-width: thin;
+      scrollbar-color: #A03021 #f1f1f1;
+    }
+  </style>
 <body class="flex flex-col min-h-screen">
     <nav class="bg-[#A03021] p-4">
         
@@ -20,7 +48,7 @@
                 </div>
                 <div class="flex items-center space-x-4">
                     <a href="https://www.mpap.mp.br/" target="_blank" class="text-white hover:text-gray-200 py-2">Portal MP</a>
-                    <a href="https://portal.mpap.mp.br/radar_ambiental/" target="_blank" class="bg-white text-[#A03021] px-4 py-2 hover:bg-gray-200 rounded-md ">Radar Ambiental</a>
+                    <a href="https://mpap.mp.br/radar_ambiental_web_v2/login" target="_blank" class="bg-white text-[#A03021] px-4 py-2 hover:bg-gray-200 rounded-md ">Radar Ambiental</a>
                 </div>
             </div>
     
@@ -39,7 +67,7 @@
                 </button>
                 <div id="mobileDropdownMenu" class="absolute hidden mt-40 w-48 bg-white rounded-md shadow-lg py-1">
                     <a href="https://www.mpap.mp.br/" target="_blank" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Portal MP</a>
-                    <a href="https://portal.mpap.mp.br/radar_ambiental/" target="_blank" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Radar Ambiental</a>
+                    <a href="https://mpap.mp.br/radar_ambiental_web_v2/login" target="_blank" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Radar Ambiental</a>
                 </div>
             </div>
                 
@@ -55,7 +83,7 @@
     
         <!-- Sidebar -->
         <!-- ... existing code ... -->
-        <aside id="sidebar" class="fixed inset-y-0 left-0 transform -translate-x-full md:relative md:translate-x-0 transition duration-200 ease-in-out z-30 md:z-0">
+        <aside id="sidebar" class="fixed inset-y-0 left-0 transform -translate-x-full md:relative md:translate-x-0 transition duration-200 ease-in-out z-30 md:z-0 md:sticky md:top-0 md:h-screen">
             <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 min-w-[200px] max-w-[400px] w-auto">
                 <ul class="space-y-2 font-medium">
                     <li class="p-5 flex justify-center items-center h-16">
@@ -81,18 +109,155 @@
                             <svg class="w-3 h-3 transition-transform duration-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
                             </svg>
-                            <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap text-lg">Página Inicial do Radar Ambiental</span>
+                            <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap text-lg">Dashboard</span>
                         </button>
                         <ul id="dropdown-pagina-inicial" class="py-2 space-y-2">
                             <li>
-                                <a href="#pagina-inicial-radar-ambiental" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100">1. Página Inicial do Radar Ambiental</a>
+                                <a href="#informacoes1-dashboard" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100">1. Informações gerais</a>
                             </li>
                             <li>
-                                <a href="#informacoes-barra-navegacao-geral" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100">2. Informações Barra de Navegação  - Geral</a>
+                                <a href="#informacoes2-dashboard" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100">2. Dashboard - Filtro</a>
                             </li>
                         </ul>
                     </li>
 
+
+                    <li>
+                        <button type="button" class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100" aria-controls="dropdown-relatorio" data-collapse-toggle="dropdown-relatorio">
+                            <svg class="w-3 h-3 transition-transform duration-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                            </svg>
+                            <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap text-lg">Relatório</span>
+                        </button>
+                        <ul id="dropdown-relatorio" class="py-2 space-y-2">
+                            <li>
+                                <a href="#relatorio1" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100">1. Relatório - Acessar</a>
+                            </li>
+                            <li>
+                                <a href="#relatorio2" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100">2. Denuncias Recebidas - Categorias</a>
+                            </li>
+                            <li>
+                                <a href="#relatorio3" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100">3. Denuncias Recebidas - Estado</a>
+                            </li>
+                            <li>
+                                <a href="#relatorio4" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100">4. Denuncias Recebidas - Cidades</a>
+                            </li>
+                            <li>
+                                <a href="#relatorio5" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100">5. Denuncias Recebidas - Gráficos</a>
+                            </li>
+                            <li>
+                                <a href="#relatorio6" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100">6. Denuncias Recebidas - Informes</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <button type="button" class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100" aria-controls="dropdown-mapa" data-collapse-toggle="dropdown-mapa">
+                            <svg class="w-3 h-3 transition-transform duration-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                            </svg>
+                            <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap text-lg">Mapas</span>
+                        </button>
+                        <ul id="dropdown-mapa" class="py-2 space-y-2">
+                            <li>
+                                <a href="#mapa1" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100">1. Mapa - Acessar</a>
+                            </li>
+                            <li>
+                                <a href="#mapa2" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100">2. Mapa - Visão Geral</a>
+                            </li>
+                            <li>
+                                <a href="#mapa3" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100">3. Mapa - Filtro</a>
+                            </li>
+                            <li>
+                                <a href="#mapa4" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100">4. Mapa - Filtro opções</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <button type="button" class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100" aria-controls="dropdown-avaliar" data-collapse-toggle="dropdown-avaliar">
+                            <svg class="w-3 h-3 transition-transform duration-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                            </svg>
+                            <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap text-lg">Avaliar</span>
+                        </button>
+                        <ul id="dropdown-avaliar" class="py-2 space-y-2">
+                            <li>
+                                <a href="#avaliar1" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100">1. Avaliar - Acessar</a>
+                            </li>
+                            <li>
+                                <a href="#avaliar2" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100">2. Avaliar - Em Análise</a>
+                            </li>
+                            <li>
+                                <a href="#avaliar3" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100">3. Informações - Em análise</a>
+                            </li>
+                            <li>
+                                <a href="#avaliar4" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100">4. Avaliar - Processados</a>
+                            </li>
+                            <li>
+                                <a href="#avaliar5" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100">5. Informações - Processados</a>
+                            </li>
+                            <li>
+                                <a href="#avaliar6" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100">6. Avaliar - Reservados</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <button type="button" class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100" aria-controls="dropdown-acessando" data-collapse-toggle="dropdown-acessando">
+                            <svg class="w-3 h-3 transition-transform duration-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                            </svg>
+                            <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap text-lg">Acessando uma denúncia</span>
+                        </button>
+                        <ul id="dropdown-acessando" class="py-2 space-y-2">
+                            <li>
+                                <a href="#acessando1" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100">1. Clicando na denúncia</a>
+                            </li>
+                            <li>
+                                <a href="#acessando2" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100">2. Informação Geral</a>
+                            </li>
+                            <li>
+                                <a href="#acessando3" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100">3. Opções Atribuídas à Denúncia</a>
+                            </li>
+                            <li>
+                                <a href="#acessando4" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100">4. Baixar PDF</a>
+                            </li>
+                            <li>
+                                <a href="#acessando5" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100">5. Avaliar</a>
+                            </li>
+                            <li>
+                                <a href="#acessando6" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100">6. Avaliar - Novo Status</a>
+                            </li>
+                            <li>
+                                <a href="#acessando7" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100">7. Referenciar - Opções</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <button type="button" class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100" aria-controls="dropdown-credenciais" data-collapse-toggle="dropdown-credenciais">
+                            <svg class="w-3 h-3 transition-transform duration-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                            </svg>
+                            <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap text-lg">Credenciais</span>
+                        </button>
+                        <ul id="dropdown-credenciais" class="py-2 space-y-2">
+                            <li>
+                                <a href="#credenciais1" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100">1. Acessar Credenciais</a>
+                            </li>
+                            <li>
+                                <a href="#credenciais2" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100">2. Credenciais <br> Lista de Usuários</a>
+                            </li>
+                            <li>
+                                <a href="#credenciais3" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100">3. Opções Credenciais <br> Adicionar Credencial</a>
+                            </li>
+                            <li>
+                                <a href="#credenciais4" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100">4. Credenciar - Informações</a>
+                            </li>
+                           
+                        </ul>
+                    </li>
                     
                 </ul>
             </div>
@@ -109,7 +274,7 @@
                     <!-- Adicione mais conteúdo específico para mobile aqui -->
                     <div class="mt-4 space-y-4">
                         <button class="w-full bg-[#A03021] text-white py-2 px-4 rounded-md">
-                            <a href="https://portal.mpap.mp.br/radar_ambiental/" target="_blank">Acessar</a>
+                            <a href="https://mpap.mp.br/radar_ambiental_web_v2/login" target="_blank">Acessar</a>
                         </button>
                     </div>
                 </div>
@@ -129,6 +294,580 @@
                         </button>
                         
                     </div>
+
+                    <div>
+                        <section id="entrar-radar-ambiental" class="max-w-3xl mx-auto px-4 py-8 mt-9">
+                            <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+                                <button type="button" class="w-full text-left p-6 focus:outline-none" aria-controls="dropdown-content-acessar-site" data-collapse-toggle="dropdown-content-acessar-site">
+                                    <h2 class="text-3xl font-bold text-gray-800 flex items-center">
+                                        <svg class="w-6 h-6 mr-2 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                        </svg>
+                                        ✔️ Como acessar o Radar Ambiental
+                                    </h2>
+                                </button>
+                                
+                                <div id="dropdown-content-acessar-site" class="p-6 border-t border-gray-200">
+                                    <h3 class="text-2xl font-semibold mb-4 text-gray-700">
+                                        1. Entrar no Radar Ambiental
+                                    </h3>
+                                    <ul class="mb-4 text-left text-gray-600">
+                                        <li>Fazer seu login, com seu usuário da intranet</li>
+                                    </ul>
+                                    <img src="https://images.tango.us/workflows/49d7a556-4226-43e7-983a-4d472a70f9f7/steps/de0cbb21-7d21-42c2-829d-5f5a02c91c34/2b1a8870-73e1-4710-b976-a84181945de3.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.4998&fp-y=0.2521&fp-z=1.6014&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=404&mark-y=104&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz0zOTEmaD0zNzUmZml0PWNyb3AmY29ybmVyLXJhZGl1cz0xMA%3D%3D" 
+                                         alt="Como acessar Radar Ambiental" 
+                                         class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-8"
+                                    />
+                                </div>
+                            </div>
+                        </section>
+        
+        
+                        <section id="dashboard" class="max-w-3xl mx-auto px-4 py-8 mt-9">
+                            <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+                                <button type="button" class="w-full text-left p-6 focus:outline-none" aria-controls="dropdown-content-dashboard" data-collapse-toggle="dropdown-content-dashboard">
+                                    <h2 class="text-3xl font-bold text-gray-800 flex items-center">
+                                        <svg class="w-6 h-6 mr-2 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                        </svg>
+                                        ✔️ Dashboard
+                                    </h2>
+                                </button>
+                                
+                                <div id="dropdown-content-dashboard" class="p-6 border-t border-gray-200">
+                                    <h3 class="text-2xl font-semibold mb-4 text-gray-700" id="informacoes1-dashboard">
+                                        1. Informações gerais
+                                    </h3>
+                                    <ul class="mb-4 text-left text-gray-600">
+                                        <li>Ao fazer login, a primeira pagina que irá aparecer, é o dashboard, onde será mostrado as informações gerais das denuncias, categorias, processos, cidades, estados e assuntos.</li>
+                                        <li>Para acessar o dashboard, você irá clicar no icone Dashboard.</li>
+                                    </ul>
+                                    <img src="https://images.tango.us/workflows/49d7a556-4226-43e7-983a-4d472a70f9f7/steps/e43c0b60-ca1c-4158-a92d-effe57cc06d3/890de516-380f-4d6b-b597-940ba6098d71.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.3482&fp-y=0.3888&fp-z=1.0073&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=2&mark-y=99&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz04MzcmaD0zNjkmZml0PWNyb3AmY29ybmVyLXJhZGl1cz0xMA%3D%3D" 
+                                         alt="Informações gerais" 
+                                         class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-8"
+                                    />
+                        
+                                    <h3 class="text-2xl font-semibold mb-4 text-gray-700" id="informacoes2-dashboard">
+                                        2. Dashboard - Filtro
+                                    </h3>
+                                    <img src="https://images.tango.us/workflows/49d7a556-4226-43e7-983a-4d472a70f9f7/steps/f57160a8-5918-4664-9439-386998bafe60/92119bb2-29a3-4c4c-9033-4cca7027193b.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.9136&fp-y=0.3073&fp-z=1.2192&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=950&mark-y=42&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz0yNDgmaD00NTgmZml0PWNyb3AmY29ybmVyLXJhZGl1cz0xMA%3D%3D" 
+                                         alt="Dashboard - Filtro" 
+                                         class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-8"
+                                    />
+                                </div>
+                            </div>
+                        </section>
+        
+                        <section id="relatorio" class="max-w-3xl mx-auto px-4 py-8 mt-9">
+                            <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+                                <button type="button" class="w-full text-left p-6 focus:outline-none" aria-controls="dropdown-content-relatorio" data-collapse-toggle="dropdown-content-relatorio">
+                                    <h2 class="text-3xl font-bold text-gray-800 flex items-center">
+                                        <svg class="w-6 h-6 mr-2 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                        </svg>
+                                        ✔️ Relatório
+                                    </h2>
+                                </button>
+                                
+                                <div id="dropdown-content-relatorio" class="p-6 border-t border-gray-200">
+                                    <h3 class="text-2xl font-semibold mb-4 text-gray-700" id="relatorio1">
+                                        1. Relatório - Acessar
+                                    </h3>
+                                    <ul class="mb-4 text-left text-gray-600">
+                                        <li>Na barra de navegação, terá a opção de relatório para clicar. Ao clicar nele, você será redirecionado para a pagina onde mostrará uma planilha de denuncias.</li>
+                                    </ul>
+                                    <img src="https://images.tango.us/workflows/49d7a556-4226-43e7-983a-4d472a70f9f7/steps/c3d88645-49ad-48ac-8b45-4bcfe4ea7302/05f36a8b-1652-4d2a-92ae-7f81bdd8a27b.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.0837&fp-y=0.0198&fp-z=2.9984&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=249&mark-y=7&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz0xMDQmaD03MyZmaXQ9Y3JvcCZjb3JuZXItcmFkaXVzPTEw" 
+                                         alt="Relatório - Acessar" 
+                                         class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-8"
+                                    />
+                        
+                                    <h3 class="text-2xl font-semibold mb-4 text-gray-700" id="relatorio2"> 
+                                        2. Denuncias Recebidas - Categorias
+                                    </h3>
+                                    <ul class="mb-4 text-left text-gray-600">
+                                        <li>Aqui será mostrado as denuncias por categoria.</li>
+                                    </ul>
+                                    <img src="https://images.tango.us/workflows/49d7a556-4226-43e7-983a-4d472a70f9f7/steps/d253e828-e0b9-4b97-b514-3a070eb135c2/9b84e6f8-20e4-4d7b-b5e5-e1637a6d7e68.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.5000&fp-y=0.4779&fp-z=1.0018&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=1&mark-y=23&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz0xMTk4Jmg9NjQ1JmZpdD1jcm9wJmNvcm5lci1yYWRpdXM9MTA%3D" 
+                                         alt="Denuncias Recebidas - Categorias" 
+                                         class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-8"
+                                    />
+                        
+                                    <h3 class="text-2xl font-semibold mb-4 text-gray-700" id="relatorio3">
+                                        3. Denuncias Recebidas - Estado
+                                    </h3>
+                                    <ul class="mb-4 text-left text-gray-600">
+                                        <li>Ao clicar no botão de ESTADOS, será mostrado as denuncias por estado.</li>
+                                    </ul>
+                                    <img src="https://images.tango.us/workflows/49d7a556-4226-43e7-983a-4d472a70f9f7/steps/21f43aeb-5b34-4e1f-b3ae-6030847a51e8/1c9930fa-7294-4c63-a6b9-8b32fc46f123.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.0938&fp-y=0.0647&fp-z=2.8573&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=236&mark-y=97&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz0xNzEmaD03MiZmaXQ9Y3JvcCZjb3JuZXItcmFkaXVzPTEw" 
+                                         alt="Denuncias Recebidas - Estado" 
+                                         class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-8"
+                                    />
+                        
+                                    <h3 class="text-2xl font-semibold mb-4 text-gray-700" id="relatorio4">
+                                        4. Denuncias Recebidas - Cidades
+                                    </h3>
+                                    <ul class="mb-4 text-left text-gray-600">
+                                        <li>Ao clicar no botão CIDADES, será mostrado as denuncias recebidas por cidade.</li>
+                                    </ul>
+                                    <img src="https://images.tango.us/workflows/49d7a556-4226-43e7-983a-4d472a70f9f7/steps/90217440-1a46-4c79-9460-a9a81f2ccaad/f41d9fb9-9655-418f-a438-0f5a7d6c0d15.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.1414&fp-y=0.0647&fp-z=2.8724&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=405&mark-y=98&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz0xNjYmaD03MyZmaXQ9Y3JvcCZjb3JuZXItcmFkaXVzPTEw" 
+                                         alt="Denuncias Recebidas - Cidades" 
+                                         class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-8"
+                                    />
+                        
+                                    <h3 class="text-2xl font-semibold mb-4 text-gray-700" id="relatorio5">
+                                        5. Denuncias Recebidas - Gráficos
+                                    </h3>
+                                    <ul class="mb-4 text-left text-gray-600">
+                                        <li>Ao clicar no botão GRÁFICOS, será mostrado as denuncias recebidas por categoria em forma de gráfico.</li>
+                                    </ul>
+                                    <img src="https://images.tango.us/workflows/49d7a556-4226-43e7-983a-4d472a70f9f7/steps/10320c3b-5535-49f2-aeef-0a40607cc588/8fc32bb2-35a4-45de-b1bd-c24372b0e971.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.1907&fp-y=0.0647&fp-z=2.8240&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=508&mark-y=96&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz0xODMmaD03MSZmaXQ9Y3JvcCZjb3JuZXItcmFkaXVzPTEw" 
+                                         alt="Denuncias Recebidas - Gráficos" 
+                                         class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-8"
+                                    />
+                        
+                                    <h3 class="text-2xl font-semibold mb-4 text-gray-700" id="relatorio6">
+                                        6. Denuncias Recebidas - Informes
+                                    </h3>
+                                    <ul class="mb-4 text-left text-gray-600">
+                                        <li>Ao clicar em INFORMES, será mostrado as denuncias recebidas.</li>
+                                    </ul>
+                                    <img src="https://images.tango.us/workflows/49d7a556-4226-43e7-983a-4d472a70f9f7/steps/53a6421c-ed98-4176-a59b-ead05a3045de/faa57f68-9f9a-4613-a588-050382803611.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.2435&fp-y=0.0647&fp-z=2.8240&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=508&mark-y=96&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz0xODMmaD03MSZmaXQ9Y3JvcCZjb3JuZXItcmFkaXVzPTEw" 
+                                         alt="Denuncias Recebidas - Informes" 
+                                         class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-8"
+                                    />
+                                </div>
+                            </div>
+                        </section>
+        
+        
+                        <section id="mapa" class="max-w-3xl mx-auto px-4 py-8 mt-9">
+                            <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+                                <button type="button" class="w-full text-left p-6 focus:outline-none" aria-controls="dropdown-content-mapa" data-collapse-toggle="dropdown-content-mapa">
+                                    <h2 class="text-3xl font-bold text-gray-800 flex items-center">
+                                        <svg class="w-6 h-6 mr-2 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                        </svg>
+                                        ✔️ Mapas
+                                    </h2>
+                                </button>
+                                
+                                <div id="dropdown-content-mapa" class="p-6 border-t border-gray-200">
+                                    <h3 class="text-2xl font-semibold mb-4 text-gray-700" id="mapa1">
+                                        1. Mapa - Acessar
+                                    </h3>
+                                    <ul class="mb-4 text-left text-gray-600">
+                                        <li>Para acessar o mapa, você irá clicar no icone de mapa.</li>
+                                    </ul>
+                                    <img src="https://images.tango.us/workflows/49d7a556-4226-43e7-983a-4d472a70f9f7/steps/5b880e49-3af4-494e-b65b-45d269db7254/bdd4f3b2-6613-49ce-a72d-ac53033a12b2.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.1116&fp-y=0.0198&fp-z=2.9984&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=350&mark-y=7&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz0xMDQmaD03MyZmaXQ9Y3JvcCZjb3JuZXItcmFkaXVzPTEw" 
+                                         alt="Mapa - Acessar" 
+                                         class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-8"
+                                    />
+                        
+                                    <h3 class="text-2xl font-semibold mb-4 text-gray-700" id="mapa2">
+                                        2. Mapa - Visão Geral
+                                    </h3>
+                                    <ul class="mb-4 text-left text-gray-600">
+                                        <li>Ao clicar no icone do mapa, você terá esse mapa interativo.</li>
+                                    </ul>
+                                    <img src="https://images.tango.us/workflows/49d7a556-4226-43e7-983a-4d472a70f9f7/steps/69975823-92f3-41f0-a1fd-57696ecf54a2/e1bdde5d-41b0-4aa0-b6e0-e1fb95bdf070.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.4998&fp-y=0.5145&fp-z=1.0018&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=1&mark-y=22&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz0xMTk3Jmg9Njk4JmZpdD1jcm9wJmNvcm5lci1yYWRpdXM9MTA%3D" 
+                                         alt="Mapa - Visão Geral" 
+                                         class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-8"
+                                    />
+                        
+                                    <h3 class="text-2xl font-semibold mb-4 text-gray-700" id="mapa3">
+                                        3. Mapa - Filtro
+                                    </h3>
+                                    <ul class="mb-4 text-left text-gray-600">
+                                        <li>Para acessar o filtro do mapa, você irá clicar na barra.</li>
+                                    </ul>
+                                    <img src="https://images.tango.us/workflows/49d7a556-4226-43e7-983a-4d472a70f9f7/steps/9cc01d3b-3aa1-41df-b8da-829d972f0792/30403482-3fde-4c61-8360-a3fea191cd67.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.9835&fp-y=0.0179&fp-z=3.0330&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=1110&mark-y=7&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz02MCZoPTY1JmZpdD1jcm9wJmNvcm5lci1yYWRpdXM9MTA%3D" 
+                                         alt="Mapa - Filtro" 
+                                         class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-8"
+                                    />
+                        
+                                    <h3 class="text-2xl font-semibold mb-4 text-gray-700" id="mapa4">
+                                        4. Mapa - Filtro opções
+                                    </h3>
+                                    <ul class="mb-4 text-left text-gray-600">
+                                        <li>Irá aparecer as opções de filtragem.</li>
+                                        <li>Podendo filtrar por:
+                                            <ul class="ml-6 list-disc">
+                                                <li>Periodo de dd/mm/aa até dd/mm/aa</li>
+                                                <li>Anos</li>
+                                                <li>Status</li>
+                                                <li>Estados</li>
+                                                <li>Categorias</li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                    <img src="https://images.tango.us/workflows/49d7a556-4226-43e7-983a-4d472a70f9f7/steps/bdb877cd-3277-48b1-bee3-76bea2bf44bc/82d8f6c5-d40d-48fc-8a7a-4d01382f8f0d.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.8929&fp-y=0.5126&fp-z=1.0290&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=943&mark-y=1&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz0yNTAmaD03MjAmZml0PWNyb3AmY29ybmVyLXJhZGl1cz0xMA%3D%3D" 
+                                         alt="Mapa - Filtro opções" 
+                                         class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-8"
+                                    />
+                                </div>
+                            </div>
+                        </section>
+                        
+                        <section id="avaliar" class="max-w-3xl mx-auto px-4 py-8 mt-9">
+                            <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+                                <button type="button" class="w-full text-left p-6 focus:outline-none" aria-controls="dropdown-content-avaliar" data-collapse-toggle="dropdown-content-avaliar">
+                                    <h2 class="text-3xl font-bold text-gray-800 flex items-center">
+                                        <svg class="w-6 h-6 mr-2 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                        </svg>
+                                        ✔️ Avaliar
+                                    </h2>
+                                </button>
+                                
+                                <div id="dropdown-content-avaliar" class="p-6 border-t border-gray-200">
+                                    <h3 class="text-2xl font-semibold mb-4 text-gray-700" id="avaliar1">
+                                        1. Avaliar - Acessar
+                                    </h3>
+                                    <img src="https://images.tango.us/workflows/49d7a556-4226-43e7-983a-4d472a70f9f7/steps/010d76fa-5bf3-486d-9018-565bb10a1b33/2d22a049-9442-4336-996a-74ca19d9bccf.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.1387&fp-y=0.0198&fp-z=2.9984&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=447&mark-y=7&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz0xMDQmaD03MyZmaXQ9Y3JvcCZjb3JuZXItcmFkaXVzPTEw" 
+                                         alt="Avaliar - Acessar" 
+                                         class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-8"
+                                    />
+                        
+                                    <h3 class="text-2xl font-semibold mb-4 text-gray-700" id="avaliar2">
+                                        2. Avaliar - Em Análise
+                                    </h3>
+                                    <ul class="mb-4 text-left text-gray-600">
+                                        <li>Para verificar as denuncias em analise, você irá clicar em Em análise.</li>
+                                    </ul>
+                                    <img src="https://images.tango.us/workflows/49d7a556-4226-43e7-983a-4d472a70f9f7/steps/c2d9ae78-42c4-462b-a9d8-9a686da35f87/ad8ea4d1-9e71-4c54-bf7a-d38e30662fb0.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.8524&fp-y=0.0647&fp-z=2.9848&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=569&mark-y=102&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz0yMDQmaD03NiZmaXQ9Y3JvcCZjb3JuZXItcmFkaXVzPTEw" 
+                                         alt="Avaliar - Em Análise" 
+                                         class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-8"
+                                    />
+                        
+                                    <h3 class="text-2xl font-semibold mb-4 text-gray-700" id="avaliar3">
+                                        3. Informações - Em análise
+                                    </h3>
+                                    <ul class="mb-4 text-left text-gray-600">
+                                        <li>Ao clicar em avaliar, você terá acesso a essa pagina, onde mostrará as denuncias em análise.</li>
+                                        <li>Acima das denuncias, terá a opçao de mostrar as denuncias de outros estados.</li>
+                                    </ul>
+                                    <img src="https://images.tango.us/workflows/49d7a556-4226-43e7-983a-4d472a70f9f7/steps/057fdaa1-5e05-4ec7-a185-5ae64ab9db2d/3ccccd03-94dd-43f5-87c2-d478db4b2395.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.5000&fp-y=0.3370&fp-z=1.0018&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=1&mark-y=23&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz0xMTk4Jmg9NDQyJmZpdD1jcm9wJmNvcm5lci1yYWRpdXM9MTA%3D" 
+                                         alt="Informações - Em análise" 
+                                         class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-8"
+                                    />
+                        
+                                    <h3 class="text-2xl font-semibold mb-4 text-gray-700" id="avaliar4">
+                                        4. Avaliar - Processados
+                                    </h3>
+                                    <ul class="mb-4 text-left text-gray-600">
+                                        <li>Para verificar as denuncias processadas, você irá clicar em Processados</li>
+                                    </ul>
+                                    <img src="https://images.tango.us/workflows/49d7a556-4226-43e7-983a-4d472a70f9f7/steps/a01c9c08-e9cf-4209-89c4-ceb42759452a/e254a74d-1116-400e-92af-db241655f00b.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.9088&fp-y=0.0647&fp-z=2.9848&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=766&mark-y=102&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz0yMTMmaD03NiZmaXQ9Y3JvcCZjb3JuZXItcmFkaXVzPTEw" 
+                                         alt="Avaliar - Processados" 
+                                         class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-8"
+                                    />
+                        
+                                    <h3 class="text-2xl font-semibold mb-4 text-gray-700" id="avaliar5">
+                                        5. Informações - Processados
+                                    </h3>
+                                    <ul class="mb-4 text-left text-gray-600">
+                                        <li>Ao clicar em avaliar, você terá acesso a essa pagina, onde mostrará as denuncias processadas.</li>
+                                        <li>Acima das denuncias, terá a opçao de mostrar as denuncias de outros estados.</li>
+                                    </ul>
+                                    <img src="https://images.tango.us/workflows/49d7a556-4226-43e7-983a-4d472a70f9f7/steps/0cbecbca-7afe-4823-88f9-13804b284fa8/dadc16a6-02cb-42fe-b17c-42a03da1a04f.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.5000&fp-y=0.5415&fp-z=1.0018&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=1&mark-y=84&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz0xMTk4Jmg9NjEzJmZpdD1jcm9wJmNvcm5lci1yYWRpdXM9MTA%3D" 
+                                         alt="Informações - Processados" 
+                                         class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-8"
+                                    />
+                        
+                                    <h3 class="text-2xl font-semibold mb-4 text-gray-700" id="avaliar6">
+                                        6. Avaliar - Reservados
+                                    </h3>
+                                    <ul class="mb-4 text-left text-gray-600">
+                                        <li>Ao clicar em reservados, você terá acesso as denuncias reservadas.</li>
+                                    </ul>
+                                    <img src="https://images.tango.us/workflows/49d7a556-4226-43e7-983a-4d472a70f9f7/steps/d0bd0740-3aa9-49a2-b14a-55d743641576/2ba664ef-28fe-412e-a47f-68b6cf65dcda.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.9647&fp-y=0.0647&fp-z=2.9848&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=973&mark-y=102&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz0yMDAmaD03NiZmaXQ9Y3JvcCZjb3JuZXItcmFkaXVzPTEw" 
+                                         alt="Avaliar - Reservados" 
+                                         class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-8"
+                                    />
+                                </div>
+                            </div>
+                        </section>
+        
+                        <section id="acessando-denuncia" class="max-w-3xl mx-auto px-4 py-8 mt-9">
+                            <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+                                <button type="button" class="w-full text-left p-6 focus:outline-none" aria-controls="dropdown-content-acessando-denuncia" data-collapse-toggle="dropdown-content-acessando-denuncia">
+                                    <h2 class="text-3xl font-bold text-gray-800 flex items-center">
+                                        <svg class="w-6 h-6 mr-2 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                        </svg>
+                                        ✔️ Acessando uma denúncia
+                                    </h2>
+                                </button>
+                                
+                                <div id="dropdown-content-acessando-denuncia" class="p-6 border-t border-gray-200">
+                                    <h3 class="text-2xl font-semibold mb-4 text-gray-700" id="acessando1">
+                                        1. Clicando na denúncia
+                                    </h3>
+                                    <ul class="mb-4 text-left text-gray-600">
+                                        <li>Clique em cima da denúncia que você deseja ver mais detalhes.</li>
+                                    </ul>
+                                    <img src="https://images.tango.us/workflows/49d7a556-4226-43e7-983a-4d472a70f9f7/steps/3eb0a174-9d36-4341-afca-b3a235fbf3db/0cb60d6c-d5d9-4d1f-aca6-9ae103708e11.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.8308&fp-y=0.4547&fp-z=2.2334&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=339&mark-y=242&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz04MTYmaD0yMzgmZml0PWNyb3AmY29ybmVyLXJhZGl1cz0xMA%3D%3D" 
+                                         alt="Clicando na denúncia" 
+                                         class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-8"
+                                    />
+                        
+                                    <h3 class="text-2xl font-semibold mb-4 text-gray-700" id="acessando2">
+                                        2. Informação Geral
+                                    </h3>
+                                    <ul class="mb-4 text-left text-gray-600">
+                                        <li>Aqui mostrará as informações gerais da denúncia.</li>
+                                    </ul>
+                                    <img src="https://images.tango.us/workflows/49d7a556-4226-43e7-983a-4d472a70f9f7/steps/8757f833-1e70-44fa-92d9-465a33cab520/dc3a9565-f693-4825-89d2-00533a9644f8.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.4961&fp-y=0.1942&fp-z=1.0074&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=9&mark-y=99&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz0xMTgyJmg9ODQmZml0PWNyb3AmY29ybmVyLXJhZGl1cz0xMA%3D%3D" 
+                                         alt="Informação Geral" 
+                                         class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-8"
+                                    />
+                        
+                                    <h3 class="text-2xl font-semibold mb-4 text-gray-700" id="acessando3">
+                                        3. Opções Atribuídas à Denúncia
+                                    </h3>
+                                    <ul class="mb-4 text-left text-gray-600">
+                                        <li>Aqui mostrará todas as ações que podem ser feitas a essa denúncia.</li>
+                                    </ul>
+                                    <img src="https://images.tango.us/workflows/49d7a556-4226-43e7-983a-4d472a70f9f7/steps/db5df8d9-91f0-4dc3-bc60-c9a4feab5ff2/fe5c8492-5ce8-408e-82e1-e8bc0999a555.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.6192&fp-y=0.0678&fp-z=1.3299&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=8&mark-y=45&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz0xMTg1Jmg9NDAmZml0PWNyb3AmY29ybmVyLXJhZGl1cz0xMA%3D%3D" 
+                                         alt="Opções Atribuídas à Denúncia" 
+                                         class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-8"
+                                    />
+                        
+                                    <h3 class="text-2xl font-semibold mb-4 text-gray-700" id="acessando4">
+                                        4. Baixar PDF
+                                    </h3>
+                                    <ul class="mb-4 text-left text-gray-600">
+                                        <li>Ao clicar no botão Baixar PDF, automaticamente você irá baixar.</li>
+                                    </ul>
+                                    <img src="https://images.tango.us/workflows/49d7a556-4226-43e7-983a-4d472a70f9f7/steps/dda2e8c6-09cd-4174-a24a-5ad9112eb9c5/e607642d-4b6e-4611-b8e5-7dfae58616d1.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.5564&fp-y=0.0663&fp-z=2.7844&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=501&mark-y=98&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz0xOTgmaD03MCZmaXQ9Y3JvcCZjb3JuZXItcmFkaXVzPTEw" 
+                                         alt="Baixar PDF" 
+                                         class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-8"
+                                    />
+                        
+                                    <h3 class="text-2xl font-semibold mb-4 text-gray-700" id="acessando5">
+                                        5. Avaliar
+                                    </h3>
+                                    <ul class="mb-4 text-left text-gray-600">
+                                        <li>Clicar no botão avaliar para acessar a página de avaliação daquele processo</li>
+                                    </ul>
+                                    <img src="https://images.tango.us/workflows/49d7a556-4226-43e7-983a-4d472a70f9f7/steps/6bc68e5f-9005-45af-8a8a-05247adaca45/6b9a716e-9bec-42c3-b071-6bb7c1f9357e.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.6087&fp-y=0.0663&fp-z=2.8876&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=520&mark-y=102&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz0xNjAmaD03MyZmaXQ9Y3JvcCZjb3JuZXItcmFkaXVzPTEw" 
+                                         alt="Avaliar" 
+                                         class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-8"
+                                    />
+                        
+                                    <h3 class="text-2xl font-semibold mb-4 text-gray-700" id="acessando6">
+                                        6. Avaliar - Novo Status
+                                    </h3>
+                                    <ul class="mb-4 text-left text-gray-600">
+                                        <li>Aqui você consegue modificar o status para:
+                                            <ul>
+                                                <li>Em análise</li>
+                                                <li>Processado</li>
+                                                <li>Reservado</li>
+                                            </ul>
+                                        </li>
+                                        <li>É possível adicionar uma anotação</li>
+                                        <li>Após finalizado, clicar em Salvar para guardar as alterações, ou em Voltar para sair dessa tela.</li>
+                                    </ul>
+                                    <img src="https://images.tango.us/workflows/49d7a556-4226-43e7-983a-4d472a70f9f7/steps/bdca1667-da20-47a2-8d20-d2d715a7a497/dbcd5ead-ca0f-42ed-a68b-b9e708dd916d.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.5000&fp-y=0.1432&fp-z=1.0074&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=4&mark-y=91&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz0xMTkxJmg9MjUmZml0PWNyb3AmY29ybmVyLXJhZGl1cz0xMA%3D%3D" 
+                                         alt="Avaliar - Novo Status" 
+                                         class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-8"
+                                    />
+                        
+                                    <h3 class="text-2xl font-semibold mb-4 text-gray-700" id="acessando7">
+                                        7. Referenciar
+                                    </h3>
+                                    <ul class="mb-4 text-left text-gray-600">
+                                        <li>Ao clicar em Referenciar, aqui você irá <strong>fazer referência a um processo</strong></li>
+                                    </ul>
+                                    <img src="https://images.tango.us/workflows/49d7a556-4226-43e7-983a-4d472a70f9f7/steps/d4a3171b-2715-4f77-9c77-690b53150b4f/36f63065-3a92-46be-bc4a-4d12e23ed0a3.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.6598&fp-y=0.0663&fp-z=2.7951&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=503&mark-y=98&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz0xOTQmaD03MSZmaXQ9Y3JvcCZjb3JuZXItcmFkaXVzPTEw" 
+                                    alt="Referenciar" 
+                                    class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-8"
+                               />
+                   
+                               <h3 class="text-2xl font-semibold mb-4 text-gray-700" id="acessando8">
+                                   8. Referenciar - Opções
+                               </h3>
+                               <ul class="mb-4 text-left text-gray-600">
+                                   <li>Aqui você terá as opções abaixo para referenciar um processo</li>
+                                   <li>Para guardar as informações atribuídas, você irá clicar em Salvar, e para sair dessa página em Voltar.</li>
+                               </ul>
+                               <img src="https://images.tango.us/workflows/49d7a556-4226-43e7-983a-4d472a70f9f7/steps/a13d36be-8621-4b1a-b130-d42e49ddd24b/65b32a21-5a43-4b36-b066-1e5a5309381e.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.5000&fp-y=0.2220&fp-z=1.0018&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=1&mark-y=34&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz0xMTk4Jmg9MjUzJmZpdD1jcm9wJmNvcm5lci1yYWRpdXM9MTA%3D" 
+                                    alt="Referenciar - Opções" 
+                                    class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-8"
+                               />
+                   
+                               <h3 class="text-2xl font-semibold mb-4 text-gray-700" id="acessando9">
+                                   9. Visualizar
+                               </h3>
+                               <ul class="mb-4 text-left text-gray-600">
+                                   <li>Ao clicar em visualizar, você terá acesso a mais informações daquele processo.</li>
+                               </ul>
+                               <img src="https://images.tango.us/workflows/49d7a556-4226-43e7-983a-4d472a70f9f7/steps/6836ee44-6b7a-41cf-8c2f-e4cd48301105/e48d85ac-db44-4f53-a18c-863f535bafbf.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.7153&fp-y=0.0663&fp-z=2.9848&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=503&mark-y=105&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz0xOTQmaD03NiZmaXQ9Y3JvcCZjb3JuZXItcmFkaXVzPTEw" 
+                                    alt="Visualizar" 
+                                    class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-8"
+                               />
+                   
+                               <h3 class="text-2xl font-semibold mb-4 text-gray-700" id="acessando10">
+                                   10. Editar
+                               </h3>
+                               <ul class="mb-4 text-left text-gray-600">
+                                   <li>Ao clicar em editar, você terá acesso à edição daquela denúncia.</li>
+                               </ul>
+                               <img src="https://images.tango.us/workflows/49d7a556-4226-43e7-983a-4d472a70f9f7/steps/255473c0-359b-4470-8c5c-900e4a3cadd6/474eafaf-4db3-4df6-8ff8-d1962cfcb70c.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.7623&fp-y=0.0663&fp-z=2.9848&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=525&mark-y=105&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz0xNDkmaD03NiZmaXQ9Y3JvcCZjb3JuZXItcmFkaXVzPTEw" 
+                                    alt="Editar" 
+                                    class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-8"
+                               />
+                   
+                               <h3 class="text-2xl font-semibold mb-4 text-gray-700" id="acessando11">
+                                   11. Editar Descrição
+                               </h3>
+                               <ul class="mb-4 text-left text-gray-600">
+                                   <li>Aqui você conseguirá editar a descrição daquela denúncia.</li>
+                                   <li>Para guardar as informações, clique em Salvar, para sair dessa página em Voltar</li>
+                               </ul>
+                               <img src="https://images.tango.us/workflows/49d7a556-4226-43e7-983a-4d472a70f9f7/steps/7f868b2d-611d-4876-bf6c-9ce1ce4e3a82/c51e6a5d-129c-4df0-8e18-bffc277c39a9.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.5000&fp-y=0.3336&fp-z=1.0018&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=1&mark-y=34&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz0xMTk4Jmg9NDE1JmZpdD1jcm9wJmNvcm5lci1yYWRpdXM9MTA%3D" 
+                                    alt="Editar Descrição" 
+                                    class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-8"
+                               />
+                   
+                               <h3 class="text-2xl font-semibold mb-4 text-gray-700" id="acessando12">
+                                   12. Anexar
+                               </h3>
+                               <ul class="mb-4 text-left text-gray-600">
+                                   <li>Ao clicar em Anexar, você terá acesso à página para anexar um documento àquela denúncia</li>
+                               </ul>
+                               <img src="https://images.tango.us/workflows/49d7a556-4226-43e7-983a-4d472a70f9f7/steps/4922246d-4516-4f9c-89fe-d4f1e11b2ce8/94f5b1e5-b640-4084-950d-ce7d665de66e.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.8047&fp-y=0.0663&fp-z=2.9848&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=520&mark-y=105&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz0xNjEmaD03NiZmaXQ9Y3JvcCZjb3JuZXItcmFkaXVzPTEw" 
+                                    alt="Anexar" 
+                                    class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-8"
+                               />
+                   
+                               <h3 class="text-2xl font-semibold mb-4 text-gray-700" id="acessando13">
+                                   13. Anexar Arquivos
+                               </h3>
+                               <ul class="mb-4 text-left text-gray-600">
+                                   <li>Aqui você conseguirá anexar um novo arquivo e fazer uma anotação àquela denúncia.</li>
+                                   <li>Para guardar as informações clicar em Salvar, e para sair dessa página em Voltar.</li>
+                               </ul>
+                               <img src="https://images.tango.us/workflows/49d7a556-4226-43e7-983a-4d472a70f9f7/steps/dfd0e87f-8b49-4ff4-962b-d62948fc2d26/82e9a520-9e23-4e7f-94da-0d765ae7991f.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.5000&fp-y=0.2140&fp-z=1.0074&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=4&mark-y=126&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz0xMTkxJmg9NjAmZml0PWNyb3AmY29ybmVyLXJhZGl1cz0xMA%3D%3D" 
+                                    alt="Anexar Arquivos" 
+                                    class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-8"
+                               />
+                               <h3 class="text-2xl font-semibold mb-4 text-gray-700" id="acessando14">
+                                14. Reprocessar
+                            </h3>
+                            <ul class="mb-4 text-left text-gray-600">
+                                <li>Ao clicar em Reprocessar, você terá acesso à página de Reprocessar, daquela denúncia.</li>
+                            </ul>
+                            <img src="https://images.tango.us/workflows/49d7a556-4226-43e7-983a-4d472a70f9f7/steps/b460a973-f647-40c7-9e65-19900c55012b/68e3c477-3bfe-4735-aa04-f0fe0c44c13c.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.8567&fp-y=0.0663&fp-z=2.9848&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=578&mark-y=105&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz0yMTgmaD03NiZmaXQ9Y3JvcCZjb3JuZXItcmFkaXVzPTEw" 
+                                 alt="Reprocessar" 
+                                 class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-8"
+                            />
+                
+                            <h3 class="text-2xl font-semibold mb-4 text-gray-700" id="acessando15">
+                                15. Reprocessar Imagens
+                            </h3>
+                            <ul class="mb-4 text-left text-gray-600">
+                                <li>Aqui você terá acesso ao reprocessar Imagens</li>
+                                <li>Opção Executar</li>
+                                <li>Opção Voltar, para voltar à página anterior</li>
+                                <img src="https://images.tango.us/workflows/49d7a556-4226-43e7-983a-4d472a70f9f7/steps/b460a973-f647-40c7-9e65-19900c55012b/68e3c477-3bfe-4735-aa04-f0fe0c44c13c.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.8567&fp-y=0.0663&fp-z=2.9848&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=578&mark-y=105&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz0yMTgmaD03NiZmaXQ9Y3JvcCZjb3JuZXItcmFkaXVzPTEw"  alt="Reprocessar Imagens" class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-8"/>
+                            </ul>
+                            
+                
+                            <h3 class="text-2xl font-semibold mb-4 text-gray-700" id="acessando16">
+                                16. Criar PGA
+                            </h3>
+                            <ul class="mb-4 text-left text-gray-600">
+                                <li>Ao clicar em Criar PGA, você terá acesso à página de criar PGA.</li>
+                            </ul>
+                            <img src="https://images.tango.us/workflows/49d7a556-4226-43e7-983a-4d472a70f9f7/steps/d259c86d-28a5-4f28-ad0b-0bb8f965e880/699e6690-4182-4d91-807c-8a1210b502a5.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.9149&fp-y=0.0663&fp-z=2.9848&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=794&mark-y=105&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz0yMDImaD03NiZmaXQ9Y3JvcCZjb3JuZXItcmFkaXVzPTEw" 
+                                 alt="Criar PGA" 
+                                 class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-8"
+                            />
+                
+                            <h3 class="text-2xl font-semibold mb-4 text-gray-700" id="acessando17">
+                                17. Criar PGA - Criação do PGA
+                            </h3>
+                            <ul class="mb-4 text-left text-gray-600">
+                                <li>Aqui você poderá escolher a UNIDADE DE DESTINO e escrever a anotação daquele PGA
+                                    <ul>
+                                        <li>Para salvar as informações, clique em Salvar</li>
+                                        <li>Para sair dessa página, clique em Voltar</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <img src="https://images.tango.us/workflows/49d7a556-4226-43e7-983a-4d472a70f9f7/steps/e34d8c36-2567-4148-868a-227f6f7cd664/5cfdaebc-7ac3-4f43-9914-3337e2edcaf9.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.5000&fp-y=0.3134&fp-z=1.0074&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=4&mark-y=34&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz0xMTkxJmg9Mzg3JmZpdD1jcm9wJmNvcm5lci1yYWRpdXM9MTA%3D" 
+                                 alt="Criar PGA - Criação do PGA" 
+                                 class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-8"
+                            />
+                        </div>
+                    </div>
+                </section>
+        
+                <section id="credenciais" class="max-w-3xl mx-auto px-4 py-8 mt-9">
+                    <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+                        <button type="button" class="w-full text-left p-6 focus:outline-none" aria-controls="dropdown-content-credenciais" data-collapse-toggle="dropdown-content-credenciais">
+                            <h2 class="text-3xl font-bold text-gray-800 flex items-center">
+                                <svg class="w-6 h-6 mr-2 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                                ✔️ Credenciais
+                            </h2>
+                        </button>
+                        
+                        <div id="dropdown-content-credenciais" class="p-6 border-t border-gray-200">
+                            <h3 class="text-2xl font-semibold mb-4 text-gray-700" id="credenciais1">
+                                1. Credenciais - Acessar
+                            </h3>
+                            <ul class="mb-4 text-left text-gray-600">
+                                <li>Para ter acesso a credenciais, você irá clicar em Credenciais na barra de navegação.</li>
+                            </ul>
+                            <img src="https://images.tango.us/workflows/49d7a556-4226-43e7-983a-4d472a70f9f7/steps/89fd9fc9-bfd7-4d28-a117-d0fdb34007f0/f7f2b547-8b50-4150-8871-d989b70dfb6c.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.1683&fp-y=0.0198&fp-z=2.9984&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=541&mark-y=7&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz0xMTkmaD03MyZmaXQ9Y3JvcCZjb3JuZXItcmFkaXVzPTEw" 
+                                 alt="Credenciais - Acessar" 
+                                 class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-8"
+                            />
+                
+                            <h3 class="text-2xl font-semibold mb-4 text-gray-700" id="credenciais2">
+                                2. Credenciais - Lista de Usuários
+                            </h3>
+                            <ul class="mb-4 text-left text-gray-600">
+                                <li>Ao clicar em credenciais, você terá acesso a Lista de Usuários credenciados na unidade.</li>
+                            </ul>
+                            <img src="https://images.tango.us/workflows/49d7a556-4226-43e7-983a-4d472a70f9f7/steps/9db6bebf-3db2-47b1-9f43-98ec96e84116/1c0cd21e-c6cf-4ca5-9a60-60b1771482c7.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.1678&fp-y=0.0647&fp-z=1.6104&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=14&mark-y=55&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz02MjAmaD00MSZmaXQ9Y3JvcCZjb3JuZXItcmFkaXVzPTEw" 
+                                 alt="Credenciais - Lista de Usuários" 
+                                 class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-8"
+                            />
+                
+                            <h3 class="text-2xl font-semibold mb-4 text-gray-700" id="credenciais3">
+                                3. Opções de Credenciar - Credenciar
+                            </h3>
+                            <ul class="mb-4 text-left text-gray-600">
+                                <li>Dentro das opções mostradas, você terá a de Credenciar, ao clicar nela, você será redirecionado para a página de credenciar</li>
+                            </ul>
+                            <img src="https://images.tango.us/workflows/49d7a556-4226-43e7-983a-4d472a70f9f7/steps/6d7c99a7-efae-4e2d-a761-fd5b51bbb9ef/8af7c851-9741-4d44-9688-5daad6937847.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.7132&fp-y=0.0663&fp-z=2.9848&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=501&mark-y=105&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz0xOTkmaD03NiZmaXQ9Y3JvcCZjb3JuZXItcmFkaXVzPTEw" 
+                                 alt="Opções de Credenciar - Credenciar" 
+                                 class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-8"
+                            />
+                
+                            <h3 class="text-2xl font-semibold mb-4 text-gray-700" id="credenciais4">
+                                4. Credenciar - Informações
+                            </h3>
+                            <ul class="mb-4 text-left text-gray-600">
+                                <li>Aqui você poderá credenciar um novo usuário.</li>
+                                <li>Após preencher o formulário, você irá clicar em Salvar.</li>
+                                <li>Se quiser cancelar a ação, apenas clique em Voltar.</li>
+                            </ul>
+                            <img src="https://images.tango.us/workflows/49d7a556-4226-43e7-983a-4d472a70f9f7/steps/3caa7e0c-30d6-43eb-b7c8-d752d2ae47d0/af0b053b-e8eb-4274-8ddc-3ca8a5ea7a54.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.5000&fp-y=0.1512&fp-z=1.0074&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=4&mark-y=34&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz0xMTkxJmg9MTUxJmZpdD1jcm9wJmNvcm5lci1yYWRpdXM9MTA%3D" 
+                                 alt="Credenciar - Informações" 
+                                 class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-8"
+                            />
+                        </div>
+                    </div>
+                </section>
+                              
+        
+                    </div>
                 </div>
             </div>
             
@@ -142,7 +881,7 @@
                     <div class="flex-1 bg-white rounded-lg shadow-lg p-6">
                         <h3 class="text-xl font-semibold mb-4">Acesse o Radar Ambiental</h3>
                         <p class="mb-4">Clique no botão abaixo para acessar o site do Radar Ambiental:</p>
-                        <a href="https://portal.mpap.mp.br/radar_ambiental/" target="_blank" class="inline-block bg-[#A03021] text-white py-2 px-4 rounded-md hover:bg-[#8a2a1d]">Acessar Radar Ambiental</a>
+                        <a href="https://mpap.mp.br/radar_ambiental_web_v2/login" target="_blank" class="inline-block bg-[#A03021] text-white py-2 px-4 rounded-md hover:bg-[#8a2a1d]">Acessar Radar Ambiental</a>
                     </div>
                     
                     <div class="flex-1 bg-white rounded-lg shadow-lg p-6">
@@ -168,65 +907,564 @@
                         </button>
                         
                         <div id="dropdown-content-acessar-site" class="p-6 border-t border-gray-200">
-                            <h3 class="text-2xl font-semibold mb-4 text-gray-700" id="entrar-radar-ambiental">
+                            <h3 class="text-2xl font-semibold mb-4 text-gray-700">
                                 1. Entrar no Radar Ambiental
                             </h3>
-                            <p class="mb-4 text-left">
-                                <a href="https://portal.mpap.mp.br/radar_ambiental/" 
-                                   target="_blank" 
-                                   rel="noopener noreferrer nofollow" 
-                                   class="text-blue-600 hover:underline text-lg">
-                                    https://portal.mpap.mp.br/radar_ambiental/
-                                </a>
-                            </p>
-                            <p class="mb-6 text-left text-gray-600">Você irá fazer o Login, inserindo seu usuário e senha.</p>
-                            <img src="https://images.tango.us/workflows/27d0f1c7-cb38-4c96-b48a-e766855ad47f/steps/fe0c50a7-8995-477d-91ba-29bd5e35520a/6f260678-ab96-405b-a958-8b14eed42c35.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.5002&fp-y=0.2544&fp-z=1.5522&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=366&mark-y=92&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz00NjgmaD0zODYmZml0PWNyb3AmY29ybmVyLXJhZGl1cz0xMA%3D%3D" 
-                                 alt="Entrar no Radar Ambiental" 
+                            <ul class="mb-4 text-left text-gray-600">
+                                <li>Fazer seu login, com seu usuário da intranet</li>
+                            </ul>
+                            <img src="https://images.tango.us/workflows/49d7a556-4226-43e7-983a-4d472a70f9f7/steps/de0cbb21-7d21-42c2-829d-5f5a02c91c34/2b1a8870-73e1-4710-b976-a84181945de3.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.4998&fp-y=0.2521&fp-z=1.6014&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=404&mark-y=104&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz0zOTEmaD0zNzUmZml0PWNyb3AmY29ybmVyLXJhZGl1cz0xMA%3D%3D" 
+                                 alt="Como acessar Radar Ambiental" 
                                  class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-8"
                             />
-            
-                            
                         </div>
                     </div>
                 </section>
 
-                <section id="pagina-inicial-radar-ambiental" class="max-w-3xl mx-auto px-4 py-8 mt-9">
+
+                <section id="dashboard" class="max-w-3xl mx-auto px-4 py-8 mt-9">
                     <div class="bg-white shadow-lg rounded-lg overflow-hidden">
-                        <button type="button" class="w-full text-left p-6 focus:outline-none" aria-controls="dropdown-content-acessar-site" data-collapse-toggle="dropdown-content-acessar-site">
+                        <button type="button" class="w-full text-left p-6 focus:outline-none" aria-controls="dropdown-content-dashboard" data-collapse-toggle="dropdown-content-dashboard">
                             <h2 class="text-3xl font-bold text-gray-800 flex items-center">
                                 <svg class="w-6 h-6 mr-2 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                                 </svg>
-                                ✔️ Pagina Inicial do Radar Ambiental
+                                ✔️ Dashboard
                             </h2>
                         </button>
                         
-                        <div id="dropdown-content-acessar-site" class="p-6 border-t border-gray-200" id="pagina-inicial-radar-ambiental">
-                            <h3 class="text-2xl font-semibold mb-4 text-gray-700">
-                                1. Página Inicial do Radar Ambiental
+                        <div id="dropdown-content-dashboard" class="p-6 border-t border-gray-200">
+                            <h3 class="text-2xl font-semibold mb-4 text-gray-700" id="informacoes1-dashboard">
+                                1. Informações gerais
                             </h3>
-                            <p class="mb-6 text-left text-gray-600">Nessa página você terá acesso ao Mapa e Listagem de Registros</p>
-                            <img src="https://images.tango.us/workflows/27d0f1c7-cb38-4c96-b48a-e766855ad47f/steps/fb18f253-35ff-4a1e-9c90-ffe8937a5b4f/db07c4ab-10d6-4900-bab0-78fb8e5669fa.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.5883&fp-y=0.5282&fp-z=1.0710&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=144&mark-y=4&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz0xMDU0Jmg9NzE1JmZpdD1jcm9wJmNvcm5lci1yYWRpdXM9MTA%3D" 
-                                 alt="Página Inicial do Radar Ambiental" 
-                                 class="w-full max-w-2xl mx-auto rounded-lg shadow-md"
+                            <ul class="mb-4 text-left text-gray-600">
+                                <li>Ao fazer login, a primeira pagina que irá aparecer, é o dashboard, onde será mostrado as informações gerais das denuncias, categorias, processos, cidades, estados e assuntos.</li>
+                                <li>Para acessar o dashboard, você irá clicar no icone Dashboard.</li>
+                            </ul>
+                            <img src="https://images.tango.us/workflows/49d7a556-4226-43e7-983a-4d472a70f9f7/steps/e43c0b60-ca1c-4158-a92d-effe57cc06d3/890de516-380f-4d6b-b597-940ba6098d71.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.3482&fp-y=0.3888&fp-z=1.0073&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=2&mark-y=99&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz04MzcmaD0zNjkmZml0PWNyb3AmY29ybmVyLXJhZGl1cz0xMA%3D%3D" 
+                                 alt="Informações gerais" 
+                                 class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-8"
                             />
-                            
-                        </div>
-
-                        <div id="dropdown-content-acessar-site" class="p-6 border-t border-gray-200">
-                            <h3 class="text-2xl font-semibold mb-4 text-gray-700"  id="informacoes-barra-navegacao-geral">
-                                2. Informações Barra de Navegação - Geral
+                
+                            <h3 class="text-2xl font-semibold mb-4 text-gray-700" id="informacoes2-dashboard">
+                                2. Dashboard - Filtro
                             </h3>
-                            <p class="mb-6 text-left text-gray-600 font-medium">Geral</p>
-                            <p class="mb-6 text-left text-gray-600 ml-2"> - Irá mostrar todas as denuncias registradas de todas as cidades</p>
-                            <img src="https://images.tango.us/workflows/27d0f1c7-cb38-4c96-b48a-e766855ad47f/steps/ffb82e96-026b-4b63-ac9c-7efa65684cac/c8682180-d0c1-4ad0-91e1-e6fcfda16bc9.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.0459&fp-y=0.0670&fp-z=2.6017&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=11&mark-y=93&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz0yNjMmaD02NiZmaXQ9Y3JvcCZjb3JuZXItcmFkaXVzPTEw"
-                                 alt="Página Inicial do Radar Ambiental" 
-                                 class="w-full max-w-2xl mx-auto rounded-lg shadow-md"
+                            <img src="https://images.tango.us/workflows/49d7a556-4226-43e7-983a-4d472a70f9f7/steps/f57160a8-5918-4664-9439-386998bafe60/92119bb2-29a3-4c4c-9033-4cca7027193b.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.9136&fp-y=0.3073&fp-z=1.2192&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=950&mark-y=42&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz0yNDgmaD00NTgmZml0PWNyb3AmY29ybmVyLXJhZGl1cz0xMA%3D%3D" 
+                                 alt="Dashboard - Filtro" 
+                                 class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-8"
                             />
-                            
                         </div>
                     </div>
                 </section>
+
+                <section id="relatorio" class="max-w-3xl mx-auto px-4 py-8 mt-9">
+                    <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+                        <button type="button" class="w-full text-left p-6 focus:outline-none" aria-controls="dropdown-content-relatorio" data-collapse-toggle="dropdown-content-relatorio">
+                            <h2 class="text-3xl font-bold text-gray-800 flex items-center">
+                                <svg class="w-6 h-6 mr-2 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                                ✔️ Relatório
+                            </h2>
+                        </button>
+                        
+                        <div id="dropdown-content-relatorio" class="p-6 border-t border-gray-200">
+                            <h3 class="text-2xl font-semibold mb-4 text-gray-700" id="relatorio1">
+                                1. Relatório - Acessar
+                            </h3>
+                            <ul class="mb-4 text-left text-gray-600">
+                                <li>Na barra de navegação, terá a opção de relatório para clicar. Ao clicar nele, você será redirecionado para a pagina onde mostrará uma planilha de denuncias.</li>
+                            </ul>
+                            <img src="https://images.tango.us/workflows/49d7a556-4226-43e7-983a-4d472a70f9f7/steps/c3d88645-49ad-48ac-8b45-4bcfe4ea7302/05f36a8b-1652-4d2a-92ae-7f81bdd8a27b.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.0837&fp-y=0.0198&fp-z=2.9984&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=249&mark-y=7&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz0xMDQmaD03MyZmaXQ9Y3JvcCZjb3JuZXItcmFkaXVzPTEw" 
+                                 alt="Relatório - Acessar" 
+                                 class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-8"
+                            />
+                
+                            <h3 class="text-2xl font-semibold mb-4 text-gray-700" id="relatorio2"> 
+                                2. Denuncias Recebidas - Categorias
+                            </h3>
+                            <ul class="mb-4 text-left text-gray-600">
+                                <li>Aqui será mostrado as denuncias por categoria.</li>
+                            </ul>
+                            <img src="https://images.tango.us/workflows/49d7a556-4226-43e7-983a-4d472a70f9f7/steps/d253e828-e0b9-4b97-b514-3a070eb135c2/9b84e6f8-20e4-4d7b-b5e5-e1637a6d7e68.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.5000&fp-y=0.4779&fp-z=1.0018&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=1&mark-y=23&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz0xMTk4Jmg9NjQ1JmZpdD1jcm9wJmNvcm5lci1yYWRpdXM9MTA%3D" 
+                                 alt="Denuncias Recebidas - Categorias" 
+                                 class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-8"
+                            />
+                
+                            <h3 class="text-2xl font-semibold mb-4 text-gray-700" id="relatorio3">
+                                3. Denuncias Recebidas - Estado
+                            </h3>
+                            <ul class="mb-4 text-left text-gray-600">
+                                <li>Ao clicar no botão de ESTADOS, será mostrado as denuncias por estado.</li>
+                            </ul>
+                            <img src="https://images.tango.us/workflows/49d7a556-4226-43e7-983a-4d472a70f9f7/steps/21f43aeb-5b34-4e1f-b3ae-6030847a51e8/1c9930fa-7294-4c63-a6b9-8b32fc46f123.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.0938&fp-y=0.0647&fp-z=2.8573&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=236&mark-y=97&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz0xNzEmaD03MiZmaXQ9Y3JvcCZjb3JuZXItcmFkaXVzPTEw" 
+                                 alt="Denuncias Recebidas - Estado" 
+                                 class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-8"
+                            />
+                
+                            <h3 class="text-2xl font-semibold mb-4 text-gray-700" id="relatorio4">
+                                4. Denuncias Recebidas - Cidades
+                            </h3>
+                            <ul class="mb-4 text-left text-gray-600">
+                                <li>Ao clicar no botão CIDADES, será mostrado as denuncias recebidas por cidade.</li>
+                            </ul>
+                            <img src="https://images.tango.us/workflows/49d7a556-4226-43e7-983a-4d472a70f9f7/steps/90217440-1a46-4c79-9460-a9a81f2ccaad/f41d9fb9-9655-418f-a438-0f5a7d6c0d15.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.1414&fp-y=0.0647&fp-z=2.8724&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=405&mark-y=98&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz0xNjYmaD03MyZmaXQ9Y3JvcCZjb3JuZXItcmFkaXVzPTEw" 
+                                 alt="Denuncias Recebidas - Cidades" 
+                                 class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-8"
+                            />
+                
+                            <h3 class="text-2xl font-semibold mb-4 text-gray-700" id="relatorio5">
+                                5. Denuncias Recebidas - Gráficos
+                            </h3>
+                            <ul class="mb-4 text-left text-gray-600">
+                                <li>Ao clicar no botão GRÁFICOS, será mostrado as denuncias recebidas por categoria em forma de gráfico.</li>
+                            </ul>
+                            <img src="https://images.tango.us/workflows/49d7a556-4226-43e7-983a-4d472a70f9f7/steps/10320c3b-5535-49f2-aeef-0a40607cc588/8fc32bb2-35a4-45de-b1bd-c24372b0e971.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.1907&fp-y=0.0647&fp-z=2.8240&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=508&mark-y=96&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz0xODMmaD03MSZmaXQ9Y3JvcCZjb3JuZXItcmFkaXVzPTEw" 
+                                 alt="Denuncias Recebidas - Gráficos" 
+                                 class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-8"
+                            />
+                
+                            <h3 class="text-2xl font-semibold mb-4 text-gray-700" id="relatorio6">
+                                6. Denuncias Recebidas - Informes
+                            </h3>
+                            <ul class="mb-4 text-left text-gray-600">
+                                <li>Ao clicar em INFORMES, será mostrado as denuncias recebidas.</li>
+                            </ul>
+                            <img src="https://images.tango.us/workflows/49d7a556-4226-43e7-983a-4d472a70f9f7/steps/53a6421c-ed98-4176-a59b-ead05a3045de/faa57f68-9f9a-4613-a588-050382803611.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.2435&fp-y=0.0647&fp-z=2.8240&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=508&mark-y=96&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz0xODMmaD03MSZmaXQ9Y3JvcCZjb3JuZXItcmFkaXVzPTEw" 
+                                 alt="Denuncias Recebidas - Informes" 
+                                 class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-8"
+                            />
+                        </div>
+                    </div>
+                </section>
+
+
+                <section id="mapa" class="max-w-3xl mx-auto px-4 py-8 mt-9">
+                    <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+                        <button type="button" class="w-full text-left p-6 focus:outline-none" aria-controls="dropdown-content-mapa" data-collapse-toggle="dropdown-content-mapa">
+                            <h2 class="text-3xl font-bold text-gray-800 flex items-center">
+                                <svg class="w-6 h-6 mr-2 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                                ✔️ Mapas
+                            </h2>
+                        </button>
+                        
+                        <div id="dropdown-content-mapa" class="p-6 border-t border-gray-200">
+                            <h3 class="text-2xl font-semibold mb-4 text-gray-700" id="mapa1">
+                                1. Mapa - Acessar
+                            </h3>
+                            <ul class="mb-4 text-left text-gray-600">
+                                <li>Para acessar o mapa, você irá clicar no icone de mapa.</li>
+                            </ul>
+                            <img src="https://images.tango.us/workflows/49d7a556-4226-43e7-983a-4d472a70f9f7/steps/5b880e49-3af4-494e-b65b-45d269db7254/bdd4f3b2-6613-49ce-a72d-ac53033a12b2.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.1116&fp-y=0.0198&fp-z=2.9984&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=350&mark-y=7&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz0xMDQmaD03MyZmaXQ9Y3JvcCZjb3JuZXItcmFkaXVzPTEw" 
+                                 alt="Mapa - Acessar" 
+                                 class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-8"
+                            />
+                
+                            <h3 class="text-2xl font-semibold mb-4 text-gray-700" id="mapa2">
+                                2. Mapa - Visão Geral
+                            </h3>
+                            <ul class="mb-4 text-left text-gray-600">
+                                <li>Ao clicar no icone do mapa, você terá esse mapa interativo.</li>
+                            </ul>
+                            <img src="https://images.tango.us/workflows/49d7a556-4226-43e7-983a-4d472a70f9f7/steps/69975823-92f3-41f0-a1fd-57696ecf54a2/e1bdde5d-41b0-4aa0-b6e0-e1fb95bdf070.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.4998&fp-y=0.5145&fp-z=1.0018&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=1&mark-y=22&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz0xMTk3Jmg9Njk4JmZpdD1jcm9wJmNvcm5lci1yYWRpdXM9MTA%3D" 
+                                 alt="Mapa - Visão Geral" 
+                                 class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-8"
+                            />
+                
+                            <h3 class="text-2xl font-semibold mb-4 text-gray-700" id="mapa3">
+                                3. Mapa - Filtro
+                            </h3>
+                            <ul class="mb-4 text-left text-gray-600">
+                                <li>Para acessar o filtro do mapa, você irá clicar na barra.</li>
+                            </ul>
+                            <img src="https://images.tango.us/workflows/49d7a556-4226-43e7-983a-4d472a70f9f7/steps/9cc01d3b-3aa1-41df-b8da-829d972f0792/30403482-3fde-4c61-8360-a3fea191cd67.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.9835&fp-y=0.0179&fp-z=3.0330&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=1110&mark-y=7&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz02MCZoPTY1JmZpdD1jcm9wJmNvcm5lci1yYWRpdXM9MTA%3D" 
+                                 alt="Mapa - Filtro" 
+                                 class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-8"
+                            />
+                
+                            <h3 class="text-2xl font-semibold mb-4 text-gray-700" id="mapa4">
+                                4. Mapa - Filtro opções
+                            </h3>
+                            <ul class="mb-4 text-left text-gray-600">
+                                <li>Irá aparecer as opções de filtragem.</li>
+                                <li>Podendo filtrar por:
+                                    <ul class="ml-6 list-disc">
+                                        <li>Periodo de dd/mm/aa até dd/mm/aa</li>
+                                        <li>Anos</li>
+                                        <li>Status</li>
+                                        <li>Estados</li>
+                                        <li>Categorias</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <img src="https://images.tango.us/workflows/49d7a556-4226-43e7-983a-4d472a70f9f7/steps/bdb877cd-3277-48b1-bee3-76bea2bf44bc/82d8f6c5-d40d-48fc-8a7a-4d01382f8f0d.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.8929&fp-y=0.5126&fp-z=1.0290&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=943&mark-y=1&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz0yNTAmaD03MjAmZml0PWNyb3AmY29ybmVyLXJhZGl1cz0xMA%3D%3D" 
+                                 alt="Mapa - Filtro opções" 
+                                 class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-8"
+                            />
+                        </div>
+                    </div>
+                </section>
+                
+                <section id="avaliar" class="max-w-3xl mx-auto px-4 py-8 mt-9">
+                    <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+                        <button type="button" class="w-full text-left p-6 focus:outline-none" aria-controls="dropdown-content-avaliar" data-collapse-toggle="dropdown-content-avaliar">
+                            <h2 class="text-3xl font-bold text-gray-800 flex items-center">
+                                <svg class="w-6 h-6 mr-2 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                                ✔️ Avaliar
+                            </h2>
+                        </button>
+                        
+                        <div id="dropdown-content-avaliar" class="p-6 border-t border-gray-200">
+                            <h3 class="text-2xl font-semibold mb-4 text-gray-700" id="avaliar1">
+                                1. Avaliar - Acessar
+                            </h3>
+                            <img src="https://images.tango.us/workflows/49d7a556-4226-43e7-983a-4d472a70f9f7/steps/010d76fa-5bf3-486d-9018-565bb10a1b33/2d22a049-9442-4336-996a-74ca19d9bccf.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.1387&fp-y=0.0198&fp-z=2.9984&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=447&mark-y=7&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz0xMDQmaD03MyZmaXQ9Y3JvcCZjb3JuZXItcmFkaXVzPTEw" 
+                                 alt="Avaliar - Acessar" 
+                                 class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-8"
+                            />
+                
+                            <h3 class="text-2xl font-semibold mb-4 text-gray-700" id="avaliar2">
+                                2. Avaliar - Em Análise
+                            </h3>
+                            <ul class="mb-4 text-left text-gray-600">
+                                <li>Para verificar as denuncias em analise, você irá clicar em Em análise.</li>
+                            </ul>
+                            <img src="https://images.tango.us/workflows/49d7a556-4226-43e7-983a-4d472a70f9f7/steps/c2d9ae78-42c4-462b-a9d8-9a686da35f87/ad8ea4d1-9e71-4c54-bf7a-d38e30662fb0.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.8524&fp-y=0.0647&fp-z=2.9848&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=569&mark-y=102&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz0yMDQmaD03NiZmaXQ9Y3JvcCZjb3JuZXItcmFkaXVzPTEw" 
+                                 alt="Avaliar - Em Análise" 
+                                 class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-8"
+                            />
+                
+                            <h3 class="text-2xl font-semibold mb-4 text-gray-700" id="avaliar3">
+                                3. Informações - Em análise
+                            </h3>
+                            <ul class="mb-4 text-left text-gray-600">
+                                <li>Ao clicar em avaliar, você terá acesso a essa pagina, onde mostrará as denuncias em análise.</li>
+                                <li>Acima das denuncias, terá a opçao de mostrar as denuncias de outros estados.</li>
+                            </ul>
+                            <img src="https://images.tango.us/workflows/49d7a556-4226-43e7-983a-4d472a70f9f7/steps/057fdaa1-5e05-4ec7-a185-5ae64ab9db2d/3ccccd03-94dd-43f5-87c2-d478db4b2395.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.5000&fp-y=0.3370&fp-z=1.0018&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=1&mark-y=23&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz0xMTk4Jmg9NDQyJmZpdD1jcm9wJmNvcm5lci1yYWRpdXM9MTA%3D" 
+                                 alt="Informações - Em análise" 
+                                 class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-8"
+                            />
+                
+                            <h3 class="text-2xl font-semibold mb-4 text-gray-700" id="avaliar4">
+                                4. Avaliar - Processados
+                            </h3>
+                            <ul class="mb-4 text-left text-gray-600">
+                                <li>Para verificar as denuncias processadas, você irá clicar em Processados</li>
+                            </ul>
+                            <img src="https://images.tango.us/workflows/49d7a556-4226-43e7-983a-4d472a70f9f7/steps/a01c9c08-e9cf-4209-89c4-ceb42759452a/e254a74d-1116-400e-92af-db241655f00b.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.9088&fp-y=0.0647&fp-z=2.9848&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=766&mark-y=102&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz0yMTMmaD03NiZmaXQ9Y3JvcCZjb3JuZXItcmFkaXVzPTEw" 
+                                 alt="Avaliar - Processados" 
+                                 class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-8"
+                            />
+                
+                            <h3 class="text-2xl font-semibold mb-4 text-gray-700" id="avaliar5">
+                                5. Informações - Processados
+                            </h3>
+                            <ul class="mb-4 text-left text-gray-600">
+                                <li>Ao clicar em avaliar, você terá acesso a essa pagina, onde mostrará as denuncias processadas.</li>
+                                <li>Acima das denuncias, terá a opçao de mostrar as denuncias de outros estados.</li>
+                            </ul>
+                            <img src="https://images.tango.us/workflows/49d7a556-4226-43e7-983a-4d472a70f9f7/steps/0cbecbca-7afe-4823-88f9-13804b284fa8/dadc16a6-02cb-42fe-b17c-42a03da1a04f.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.5000&fp-y=0.5415&fp-z=1.0018&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=1&mark-y=84&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz0xMTk4Jmg9NjEzJmZpdD1jcm9wJmNvcm5lci1yYWRpdXM9MTA%3D" 
+                                 alt="Informações - Processados" 
+                                 class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-8"
+                            />
+                
+                            <h3 class="text-2xl font-semibold mb-4 text-gray-700" id="avaliar6">
+                                6. Avaliar - Reservados
+                            </h3>
+                            <ul class="mb-4 text-left text-gray-600">
+                                <li>Ao clicar em reservados, você terá acesso as denuncias reservadas.</li>
+                            </ul>
+                            <img src="https://images.tango.us/workflows/49d7a556-4226-43e7-983a-4d472a70f9f7/steps/d0bd0740-3aa9-49a2-b14a-55d743641576/2ba664ef-28fe-412e-a47f-68b6cf65dcda.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.9647&fp-y=0.0647&fp-z=2.9848&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=973&mark-y=102&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz0yMDAmaD03NiZmaXQ9Y3JvcCZjb3JuZXItcmFkaXVzPTEw" 
+                                 alt="Avaliar - Reservados" 
+                                 class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-8"
+                            />
+                        </div>
+                    </div>
+                </section>
+
+                <section id="acessando-denuncia" class="max-w-3xl mx-auto px-4 py-8 mt-9">
+                    <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+                        <button type="button" class="w-full text-left p-6 focus:outline-none" aria-controls="dropdown-content-acessando-denuncia" data-collapse-toggle="dropdown-content-acessando-denuncia">
+                            <h2 class="text-3xl font-bold text-gray-800 flex items-center">
+                                <svg class="w-6 h-6 mr-2 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                                ✔️ Acessando uma denúncia
+                            </h2>
+                        </button>
+                        
+                        <div id="dropdown-content-acessando-denuncia" class="p-6 border-t border-gray-200">
+                            <h3 class="text-2xl font-semibold mb-4 text-gray-700" id="acessando1">
+                                1. Clicando na denúncia
+                            </h3>
+                            <ul class="mb-4 text-left text-gray-600">
+                                <li>Clique em cima da denúncia que você deseja ver mais detalhes.</li>
+                            </ul>
+                            <img src="https://images.tango.us/workflows/49d7a556-4226-43e7-983a-4d472a70f9f7/steps/3eb0a174-9d36-4341-afca-b3a235fbf3db/0cb60d6c-d5d9-4d1f-aca6-9ae103708e11.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.8308&fp-y=0.4547&fp-z=2.2334&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=339&mark-y=242&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz04MTYmaD0yMzgmZml0PWNyb3AmY29ybmVyLXJhZGl1cz0xMA%3D%3D" 
+                                 alt="Clicando na denúncia" 
+                                 class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-8"
+                            />
+                
+                            <h3 class="text-2xl font-semibold mb-4 text-gray-700" id="acessando2">
+                                2. Informação Geral
+                            </h3>
+                            <ul class="mb-4 text-left text-gray-600">
+                                <li>Aqui mostrará as informações gerais da denúncia.</li>
+                            </ul>
+                            <img src="https://images.tango.us/workflows/49d7a556-4226-43e7-983a-4d472a70f9f7/steps/8757f833-1e70-44fa-92d9-465a33cab520/dc3a9565-f693-4825-89d2-00533a9644f8.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.4961&fp-y=0.1942&fp-z=1.0074&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=9&mark-y=99&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz0xMTgyJmg9ODQmZml0PWNyb3AmY29ybmVyLXJhZGl1cz0xMA%3D%3D" 
+                                 alt="Informação Geral" 
+                                 class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-8"
+                            />
+                
+                            <h3 class="text-2xl font-semibold mb-4 text-gray-700" id="acessando3">
+                                3. Opções Atribuídas à Denúncia
+                            </h3>
+                            <ul class="mb-4 text-left text-gray-600">
+                                <li>Aqui mostrará todas as ações que podem ser feitas a essa denúncia.</li>
+                            </ul>
+                            <img src="https://images.tango.us/workflows/49d7a556-4226-43e7-983a-4d472a70f9f7/steps/db5df8d9-91f0-4dc3-bc60-c9a4feab5ff2/fe5c8492-5ce8-408e-82e1-e8bc0999a555.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.6192&fp-y=0.0678&fp-z=1.3299&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=8&mark-y=45&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz0xMTg1Jmg9NDAmZml0PWNyb3AmY29ybmVyLXJhZGl1cz0xMA%3D%3D" 
+                                 alt="Opções Atribuídas à Denúncia" 
+                                 class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-8"
+                            />
+                
+                            <h3 class="text-2xl font-semibold mb-4 text-gray-700" id="acessando4">
+                                4. Baixar PDF
+                            </h3>
+                            <ul class="mb-4 text-left text-gray-600">
+                                <li>Ao clicar no botão Baixar PDF, automaticamente você irá baixar.</li>
+                            </ul>
+                            <img src="https://images.tango.us/workflows/49d7a556-4226-43e7-983a-4d472a70f9f7/steps/dda2e8c6-09cd-4174-a24a-5ad9112eb9c5/e607642d-4b6e-4611-b8e5-7dfae58616d1.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.5564&fp-y=0.0663&fp-z=2.7844&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=501&mark-y=98&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz0xOTgmaD03MCZmaXQ9Y3JvcCZjb3JuZXItcmFkaXVzPTEw" 
+                                 alt="Baixar PDF" 
+                                 class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-8"
+                            />
+                
+                            <h3 class="text-2xl font-semibold mb-4 text-gray-700" id="acessando5">
+                                5. Avaliar
+                            </h3>
+                            <ul class="mb-4 text-left text-gray-600">
+                                <li>Clicar no botão avaliar para acessar a página de avaliação daquele processo</li>
+                            </ul>
+                            <img src="https://images.tango.us/workflows/49d7a556-4226-43e7-983a-4d472a70f9f7/steps/6bc68e5f-9005-45af-8a8a-05247adaca45/6b9a716e-9bec-42c3-b071-6bb7c1f9357e.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.6087&fp-y=0.0663&fp-z=2.8876&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=520&mark-y=102&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz0xNjAmaD03MyZmaXQ9Y3JvcCZjb3JuZXItcmFkaXVzPTEw" 
+                                 alt="Avaliar" 
+                                 class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-8"
+                            />
+                
+                            <h3 class="text-2xl font-semibold mb-4 text-gray-700" id="acessando6">
+                                6. Avaliar - Novo Status
+                            </h3>
+                            <ul class="mb-4 text-left text-gray-600">
+                                <li>Aqui você consegue modificar o status para:
+                                    <ul>
+                                        <li>Em análise</li>
+                                        <li>Processado</li>
+                                        <li>Reservado</li>
+                                    </ul>
+                                </li>
+                                <li>É possível adicionar uma anotação</li>
+                                <li>Após finalizado, clicar em Salvar para guardar as alterações, ou em Voltar para sair dessa tela.</li>
+                            </ul>
+                            <img src="https://images.tango.us/workflows/49d7a556-4226-43e7-983a-4d472a70f9f7/steps/bdca1667-da20-47a2-8d20-d2d715a7a497/dbcd5ead-ca0f-42ed-a68b-b9e708dd916d.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.5000&fp-y=0.1432&fp-z=1.0074&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=4&mark-y=91&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz0xMTkxJmg9MjUmZml0PWNyb3AmY29ybmVyLXJhZGl1cz0xMA%3D%3D" 
+                                 alt="Avaliar - Novo Status" 
+                                 class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-8"
+                            />
+                
+                            <h3 class="text-2xl font-semibold mb-4 text-gray-700" id="acessando7">
+                                7. Referenciar
+                            </h3>
+                            <ul class="mb-4 text-left text-gray-600">
+                                <li>Ao clicar em Referenciar, aqui você irá <strong>fazer referência a um processo</strong></li>
+                            </ul>
+                            <img src="https://images.tango.us/workflows/49d7a556-4226-43e7-983a-4d472a70f9f7/steps/d4a3171b-2715-4f77-9c77-690b53150b4f/36f63065-3a92-46be-bc4a-4d12e23ed0a3.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.6598&fp-y=0.0663&fp-z=2.7951&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=503&mark-y=98&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz0xOTQmaD03MSZmaXQ9Y3JvcCZjb3JuZXItcmFkaXVzPTEw" 
+                            alt="Referenciar" 
+                            class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-8"
+                       />
+           
+                       <h3 class="text-2xl font-semibold mb-4 text-gray-700" id="acessando8">
+                           8. Referenciar - Opções
+                       </h3>
+                       <ul class="mb-4 text-left text-gray-600">
+                           <li>Aqui você terá as opções abaixo para referenciar um processo</li>
+                           <li>Para guardar as informações atribuídas, você irá clicar em Salvar, e para sair dessa página em Voltar.</li>
+                       </ul>
+                       <img src="https://images.tango.us/workflows/49d7a556-4226-43e7-983a-4d472a70f9f7/steps/a13d36be-8621-4b1a-b130-d42e49ddd24b/65b32a21-5a43-4b36-b066-1e5a5309381e.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.5000&fp-y=0.2220&fp-z=1.0018&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=1&mark-y=34&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz0xMTk4Jmg9MjUzJmZpdD1jcm9wJmNvcm5lci1yYWRpdXM9MTA%3D" 
+                            alt="Referenciar - Opções" 
+                            class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-8"
+                       />
+           
+                       <h3 class="text-2xl font-semibold mb-4 text-gray-700" id="acessando9">
+                           9. Visualizar
+                       </h3>
+                       <ul class="mb-4 text-left text-gray-600">
+                           <li>Ao clicar em visualizar, você terá acesso a mais informações daquele processo.</li>
+                       </ul>
+                       <img src="https://images.tango.us/workflows/49d7a556-4226-43e7-983a-4d472a70f9f7/steps/6836ee44-6b7a-41cf-8c2f-e4cd48301105/e48d85ac-db44-4f53-a18c-863f535bafbf.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.7153&fp-y=0.0663&fp-z=2.9848&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=503&mark-y=105&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz0xOTQmaD03NiZmaXQ9Y3JvcCZjb3JuZXItcmFkaXVzPTEw" 
+                            alt="Visualizar" 
+                            class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-8"
+                       />
+           
+                       <h3 class="text-2xl font-semibold mb-4 text-gray-700" id="acessando10">
+                           10. Editar
+                       </h3>
+                       <ul class="mb-4 text-left text-gray-600">
+                           <li>Ao clicar em editar, você terá acesso à edição daquela denúncia.</li>
+                       </ul>
+                       <img src="https://images.tango.us/workflows/49d7a556-4226-43e7-983a-4d472a70f9f7/steps/255473c0-359b-4470-8c5c-900e4a3cadd6/474eafaf-4db3-4df6-8ff8-d1962cfcb70c.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.7623&fp-y=0.0663&fp-z=2.9848&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=525&mark-y=105&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz0xNDkmaD03NiZmaXQ9Y3JvcCZjb3JuZXItcmFkaXVzPTEw" 
+                            alt="Editar" 
+                            class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-8"
+                       />
+           
+                       <h3 class="text-2xl font-semibold mb-4 text-gray-700" id="acessando11">
+                           11. Editar Descrição
+                       </h3>
+                       <ul class="mb-4 text-left text-gray-600">
+                           <li>Aqui você conseguirá editar a descrição daquela denúncia.</li>
+                           <li>Para guardar as informações, clique em Salvar, para sair dessa página em Voltar</li>
+                       </ul>
+                       <img src="https://images.tango.us/workflows/49d7a556-4226-43e7-983a-4d472a70f9f7/steps/7f868b2d-611d-4876-bf6c-9ce1ce4e3a82/c51e6a5d-129c-4df0-8e18-bffc277c39a9.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.5000&fp-y=0.3336&fp-z=1.0018&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=1&mark-y=34&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz0xMTk4Jmg9NDE1JmZpdD1jcm9wJmNvcm5lci1yYWRpdXM9MTA%3D" 
+                            alt="Editar Descrição" 
+                            class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-8"
+                       />
+           
+                       <h3 class="text-2xl font-semibold mb-4 text-gray-700" id="acessando12">
+                           12. Anexar
+                       </h3>
+                       <ul class="mb-4 text-left text-gray-600">
+                           <li>Ao clicar em Anexar, você terá acesso à página para anexar um documento àquela denúncia</li>
+                       </ul>
+                       <img src="https://images.tango.us/workflows/49d7a556-4226-43e7-983a-4d472a70f9f7/steps/4922246d-4516-4f9c-89fe-d4f1e11b2ce8/94f5b1e5-b640-4084-950d-ce7d665de66e.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.8047&fp-y=0.0663&fp-z=2.9848&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=520&mark-y=105&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz0xNjEmaD03NiZmaXQ9Y3JvcCZjb3JuZXItcmFkaXVzPTEw" 
+                            alt="Anexar" 
+                            class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-8"
+                       />
+           
+                       <h3 class="text-2xl font-semibold mb-4 text-gray-700" id="acessando13">
+                           13. Anexar Arquivos
+                       </h3>
+                       <ul class="mb-4 text-left text-gray-600">
+                           <li>Aqui você conseguirá anexar um novo arquivo e fazer uma anotação àquela denúncia.</li>
+                           <li>Para guardar as informações clicar em Salvar, e para sair dessa página em Voltar.</li>
+                       </ul>
+                       <img src="https://images.tango.us/workflows/49d7a556-4226-43e7-983a-4d472a70f9f7/steps/dfd0e87f-8b49-4ff4-962b-d62948fc2d26/82e9a520-9e23-4e7f-94da-0d765ae7991f.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.5000&fp-y=0.2140&fp-z=1.0074&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=4&mark-y=126&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz0xMTkxJmg9NjAmZml0PWNyb3AmY29ybmVyLXJhZGl1cz0xMA%3D%3D" 
+                            alt="Anexar Arquivos" 
+                            class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-8"
+                       />
+                       <h3 class="text-2xl font-semibold mb-4 text-gray-700" id="acessando14">
+                        14. Reprocessar
+                    </h3>
+                    <ul class="mb-4 text-left text-gray-600">
+                        <li>Ao clicar em Reprocessar, você terá acesso à página de Reprocessar, daquela denúncia.</li>
+                    </ul>
+                    <img src="https://images.tango.us/workflows/49d7a556-4226-43e7-983a-4d472a70f9f7/steps/b460a973-f647-40c7-9e65-19900c55012b/68e3c477-3bfe-4735-aa04-f0fe0c44c13c.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.8567&fp-y=0.0663&fp-z=2.9848&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=578&mark-y=105&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz0yMTgmaD03NiZmaXQ9Y3JvcCZjb3JuZXItcmFkaXVzPTEw" 
+                         alt="Reprocessar" 
+                         class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-8"
+                    />
+        
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-700" id="acessando15">
+                        15. Reprocessar Imagens
+                    </h3>
+                    <ul class="mb-4 text-left text-gray-600">
+                        <li>Aqui você terá acesso ao reprocessar Imagens</li>
+                        <li>Opção Executar</li>
+                        <li>Opção Voltar, para voltar à página anterior</li>
+                        <img src="https://images.tango.us/workflows/49d7a556-4226-43e7-983a-4d472a70f9f7/steps/b460a973-f647-40c7-9e65-19900c55012b/68e3c477-3bfe-4735-aa04-f0fe0c44c13c.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.8567&fp-y=0.0663&fp-z=2.9848&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=578&mark-y=105&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz0yMTgmaD03NiZmaXQ9Y3JvcCZjb3JuZXItcmFkaXVzPTEw"  alt="Reprocessar Imagens" class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-8"/>
+                    </ul>
+                    
+        
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-700" id="acessando16">
+                        16. Criar PGA
+                    </h3>
+                    <ul class="mb-4 text-left text-gray-600">
+                        <li>Ao clicar em Criar PGA, você terá acesso à página de criar PGA.</li>
+                    </ul>
+                    <img src="https://images.tango.us/workflows/49d7a556-4226-43e7-983a-4d472a70f9f7/steps/d259c86d-28a5-4f28-ad0b-0bb8f965e880/699e6690-4182-4d91-807c-8a1210b502a5.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.9149&fp-y=0.0663&fp-z=2.9848&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=794&mark-y=105&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz0yMDImaD03NiZmaXQ9Y3JvcCZjb3JuZXItcmFkaXVzPTEw" 
+                         alt="Criar PGA" 
+                         class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-8"
+                    />
+        
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-700" id="acessando17">
+                        17. Criar PGA - Criação do PGA
+                    </h3>
+                    <ul class="mb-4 text-left text-gray-600">
+                        <li>Aqui você poderá escolher a UNIDADE DE DESTINO e escrever a anotação daquele PGA
+                            <ul>
+                                <li>Para salvar as informações, clique em Salvar</li>
+                                <li>Para sair dessa página, clique em Voltar</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <img src="https://images.tango.us/workflows/49d7a556-4226-43e7-983a-4d472a70f9f7/steps/e34d8c36-2567-4148-868a-227f6f7cd664/5cfdaebc-7ac3-4f43-9914-3337e2edcaf9.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.5000&fp-y=0.3134&fp-z=1.0074&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=4&mark-y=34&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz0xMTkxJmg9Mzg3JmZpdD1jcm9wJmNvcm5lci1yYWRpdXM9MTA%3D" 
+                         alt="Criar PGA - Criação do PGA" 
+                         class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-8"
+                    />
+                </div>
+            </div>
+        </section>
+
+        <section id="credenciais" class="max-w-3xl mx-auto px-4 py-8 mt-9">
+            <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+                <button type="button" class="w-full text-left p-6 focus:outline-none" aria-controls="dropdown-content-credenciais" data-collapse-toggle="dropdown-content-credenciais">
+                    <h2 class="text-3xl font-bold text-gray-800 flex items-center">
+                        <svg class="w-6 h-6 mr-2 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                        ✔️ Credenciais
+                    </h2>
+                </button>
+                
+                <div id="dropdown-content-credenciais" class="p-6 border-t border-gray-200">
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-700" id="credenciais1">
+                        1. Credenciais - Acessar
+                    </h3>
+                    <ul class="mb-4 text-left text-gray-600">
+                        <li>Para ter acesso a credenciais, você irá clicar em Credenciais na barra de navegação.</li>
+                    </ul>
+                    <img src="https://images.tango.us/workflows/49d7a556-4226-43e7-983a-4d472a70f9f7/steps/89fd9fc9-bfd7-4d28-a117-d0fdb34007f0/f7f2b547-8b50-4150-8871-d989b70dfb6c.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.1683&fp-y=0.0198&fp-z=2.9984&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=541&mark-y=7&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz0xMTkmaD03MyZmaXQ9Y3JvcCZjb3JuZXItcmFkaXVzPTEw" 
+                         alt="Credenciais - Acessar" 
+                         class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-8"
+                    />
+        
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-700" id="credenciais2">
+                        2. Credenciais - Lista de Usuários
+                    </h3>
+                    <ul class="mb-4 text-left text-gray-600">
+                        <li>Ao clicar em credenciais, você terá acesso a Lista de Usuários credenciados na unidade.</li>
+                    </ul>
+                    <img src="https://images.tango.us/workflows/49d7a556-4226-43e7-983a-4d472a70f9f7/steps/9db6bebf-3db2-47b1-9f43-98ec96e84116/1c0cd21e-c6cf-4ca5-9a60-60b1771482c7.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.1678&fp-y=0.0647&fp-z=1.6104&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=14&mark-y=55&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz02MjAmaD00MSZmaXQ9Y3JvcCZjb3JuZXItcmFkaXVzPTEw" 
+                         alt="Credenciais - Lista de Usuários" 
+                         class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-8"
+                    />
+        
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-700" id="credenciais3">
+                        3. Opções de Credenciar - Credenciar
+                    </h3>
+                    <ul class="mb-4 text-left text-gray-600">
+                        <li>Dentro das opções mostradas, você terá a de Credenciar, ao clicar nela, você será redirecionado para a página de credenciar</li>
+                    </ul>
+                    <img src="https://images.tango.us/workflows/49d7a556-4226-43e7-983a-4d472a70f9f7/steps/6d7c99a7-efae-4e2d-a761-fd5b51bbb9ef/8af7c851-9741-4d44-9688-5daad6937847.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.7132&fp-y=0.0663&fp-z=2.9848&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=501&mark-y=105&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz0xOTkmaD03NiZmaXQ9Y3JvcCZjb3JuZXItcmFkaXVzPTEw" 
+                         alt="Opções de Credenciar - Credenciar" 
+                         class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-8"
+                    />
+        
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-700" id="credenciais4">
+                        4. Credenciar - Informações
+                    </h3>
+                    <ul class="mb-4 text-left text-gray-600">
+                        <li>Aqui você poderá credenciar um novo usuário.</li>
+                        <li>Após preencher o formulário, você irá clicar em Salvar.</li>
+                        <li>Se quiser cancelar a ação, apenas clique em Voltar.</li>
+                    </ul>
+                    <img src="https://images.tango.us/workflows/49d7a556-4226-43e7-983a-4d472a70f9f7/steps/3caa7e0c-30d6-43eb-b7c8-d752d2ae47d0/af0b053b-e8eb-4274-8ddc-3ca8a5ea7a54.png?fm=png&crop=focalpoint&fit=crop&fp-x=0.5000&fp-y=0.1512&fp-z=1.0074&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=4&mark-y=34&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTQlMkNGRjc0NDImdz0xMTkxJmg9MTUxJmZpdD1jcm9wJmNvcm5lci1yYWRpdXM9MTA%3D" 
+                         alt="Credenciar - Informações" 
+                         class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-8"
+                    />
+                </div>
+            </div>
+        </section>
+                      
 
 
             </div>
